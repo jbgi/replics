@@ -1,6 +1,6 @@
 = Introduction =
 
-Replics's Embedded P2P Loosely Interconnected Census System. Aiming at providing a flexible, tolerant test.
+Replics's Embedded P2P Loosely Interconnected Census System. Aiming at providing a flexible, tolerant [test].
 
 = Contexte =
 
