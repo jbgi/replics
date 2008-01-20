@@ -20,20 +20,48 @@
 
 package replics.data;
 
-import java.io.Serializable; 
+import java.io.Serializable;
+
+import org.w3c.dom.Document;
 
 /**
- * 
+ * Generic interface for all records, it extends Serializable but future version
+ * will not, when XML serialization is fast and reliable.
  * 
  * @author Jean-Baptiste Giraudeau
  */
 public interface IRecord extends Serializable {
-	
-	public String getCryptedXML ();
 
-    public IMetaRecord getMetaRecord ();
+	/**
+	 * Return an hash string computed from all fields (SHA1 or MD5 hash
+	 * function). The computed hash is used to determine either the integrity or
+	 * the uniqueness of the record.
+	 * 
+	 * @return a hash string for the record.
+	 */
+	public String getHash();
 
-    public IRecordID getRecordID();
+	/**
+	 * Return the ID of the record this tag record is qualifying. This
+	 * corresponding record does not necessarily exist in the database.
+	 * 
+	 * @return an IRecordID object.
+	 */
+	public IRecordID getRecordID();
+
+	/**
+	 * Serialize the record using XML.
+	 * 
+	 * @return a string being a valid XML document.
+	 */
+	public String getXML();
+
+	/**
+	 * Return the XML document object for this record. Result is an already
+	 * parsed equivalent of getXML().
+	 * 
+	 * @return an XML document representation of this record.
+	 */
+	public Document getXMLdocument();
 
 }
-

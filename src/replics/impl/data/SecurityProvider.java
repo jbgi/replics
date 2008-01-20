@@ -20,39 +20,75 @@
 
 package replics.impl.data;
 
-import java.util.Date;
+import org.w3c.dom.Document;
 
-import replics.data.ITagRecord;
-import replics.data.Tag;
+import replics.data.IRecord;
+import replics.data.ISecurityProvider;
 
-public class TagRecord extends Record implements ITagRecord {
+public class SecurityProvider implements ISecurityProvider {
 
 	@Override
-	public String getComments() {
+	public void initialize() {
+		// TODO Auto-generated method stub
+
+	}
+	
+	@Override
+	public boolean checkPassword(String password) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean isUncorrupted(IRecord record) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public Document passwordDecrypt(Document cryptedDocument) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public Date getDate() {
+	public String passwordDecrypt(String cryptedText) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public String getPeerID() {
+	public Document passwordEncrypt(Document unCryptedDocument) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public Tag getTag() {
+	public String passwordEncrypt(String unCryptedText) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public String getHash() {
+	public Document privateDecrypt(Document cryptedDocument) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String privateDecrypt(String cryptedText) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Document publicEncrypt(Document unCryptedDocument) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String publicEncrypt(String unCryptedText) {
 		// TODO Auto-generated method stub
 		return null;
 	}

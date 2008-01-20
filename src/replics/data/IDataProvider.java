@@ -21,6 +21,7 @@
 package replics.data;
 
 import java.util.List;
+
 import org.w3c.dom.Document;
 
 /**
@@ -40,31 +41,6 @@ public interface IDataProvider {
 	 * with the database.
 	 */
 	public void initialize();
-
-	/**
-	 * Creates an IRecord object from encrypted XML and previous IMetaRecord
-	 * object.
-	 * 
-	 * @param xmlEncryptedRecord
-	 *            an XML file whose fields have been encrypted with a public
-	 *            key.
-	 * @param metaRecord
-	 *            the meta-record associated.
-	 * 
-	 * @return an IRecord object.
-	 */
-	public IRecord createFromEncryptedXML(Document xmlEncryptedRecord,
-			IMetaRecord metaRecord);
-
-	/**
-	 * Creates an an IMetaRecord object from XML containing biometric data.
-	 * 
-	 * @param xmlMetaRecord
-	 *            XML document of biometric data collected from human interface.
-	 * 
-	 * @return An IMetaRecord object.
-	 */
-	public IMetaRecord createFromXML(Document xmlMetaRecord);
 
 	/**
 	 * Creates the corresponding IRecordID object.
@@ -278,27 +254,33 @@ public interface IDataProvider {
 	public void lightenRecords(List<IRecordID> recordIDs);
 
 	/**
-	 * Store a meta-record in the local database.
+	 * Create an IRecord (or IMetaRecord or ITagRecord) object from its XML
+	 * representation.
 	 * 
-	 * @param metaRecord
-	 *            object to be saved.
+	 * @param xmlRecord
+	 *            XML text.
+	 * 
+	 * @return an IRecord object or null if parsing error.
 	 */
-	public void saveMetaRecord(IMetaRecord metaRecord);
+	public IRecord readFromXML(String xmlRecord);
 
 	/**
-	 * Store a record in the local database.
+	 * Create an IRecord (or IMetaRecord or ITagRecord) object from its XML
+	 * document representation.
+	 * 
+	 * @param xmlRecord
+	 *            XML document.
+	 * 
+	 * @return an IRecord object or null if parsing error.
+	 */
+	public IRecord readFromXMLdocument(Document xmlDocumentRecord);
+
+	/**
+	 * Store a record (or meta-record or tag record) in the local database.
 	 * 
 	 * @param record
 	 *            object to be saved.
 	 */
 	public void saveRecord(IRecord record);
-
-	/**
-	 * Save a tag record in the local database.
-	 * 
-	 * @param tagRecord
-	 *            object to be saved.
-	 */
-	public void saveTagRecord(ITagRecord tagRecord);
 
 }

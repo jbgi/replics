@@ -21,19 +21,34 @@
 package replics.data;
 
 /**
- * 
+ * Enumeration of possible tag for a tag record. The order is very important and
+ * cannot be change without causing inconsistency in tag records.
  * 
  * @author Jean-Baptiste Giraudeau
  */
 public enum Tag {
 
-    CANCELLED,
+	/**
+	 * Another record already existed with matching bio-metric data.
+	 */
+	DUPLICATION_ATTEMPT,
 
-    DUPLICATION_ATTEMPT,
+	/**
+	 * The record have been invalidated by the verification server and should be
+	 * re-issued.
+	 */
+	INVALID,
 
-    INVALID,
+	/**
+	 * The record have been asked to be re-printed, probably because of printing
+	 * problems.
+	 */
+	SECOND_PRINT,
 
-    SECURED;
+	/**
+	 * The record have been saved on the central backup server, and so is
+	 * candidate for lightening/deletion.
+	 */
+	SECURED;
 
 }
-

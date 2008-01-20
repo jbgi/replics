@@ -20,20 +20,29 @@
 
 package replics.impl.data;
 
-import replics.data.IRecordID;
+import org.w3c.dom.Document;
 
-public class RecordID implements IRecordID {
+import replics.data.IFullRecord;
+import replics.data.IMetaRecord;
+
+public class FullRecord extends Record implements IFullRecord {
 
 	@Override
-	public String getGroupID() {
+	public String getHash() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public int getRecordID() {
+	public IMetaRecord getMetaRecord() {
 		// TODO Auto-generated method stub
-		return 0;
+		return null;
+	}
+
+	@Override
+	public Document getXMLcivilRecord() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

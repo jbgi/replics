@@ -1,3 +1,23 @@
+/*
+ *  Copyright 2008 École des Mines de Nantes.
+ * 
+ * This file is part of Replics.
+ * 
+ * Replics <http://replics.googlecode.com> is free software: 
+ * you can redistribute it and/or modify it under the terms
+ * of the GNU General Public License as published by the
+ * Free Software Foundation, either version 3 of the License,
+ * or (at your option) any later version.
+ * 
+ * Replics is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ * 
+ * You should have received a copy of the GNU General Public License
+ * along with Replics.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
 package replics.impl.data;
 
 import java.util.List;
@@ -14,18 +34,11 @@ import replics.data.Tag;
 public class MySqlDataProvider implements IDataProvider {
 
 	@Override
-	public IRecord createFromEncryptedXML(Document xmlEncryptedRecord,
-			IMetaRecord metaRecord) {
+	public void initialize() {
 		// TODO Auto-generated method stub
-		return null;
+		
 	}
-
-	@Override
-	public IMetaRecord createFromXML(Document xmlMetaRecord) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
+	
 	@Override
 	public IRecordID createRecordID(String groupID, int recordID) {
 		// TODO Auto-generated method stub
@@ -41,7 +54,7 @@ public class MySqlDataProvider implements IDataProvider {
 	@Override
 	public void deleteRecords(List<IRecordID> recordIDs) {
 		// TODO Auto-generated method stub
-
+		
 	}
 
 	@Override
@@ -126,12 +139,6 @@ public class MySqlDataProvider implements IDataProvider {
 	}
 
 	@Override
-	public void initialize() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
 	public boolean isRecordTaggedWith(IRecordID recordID, Tag tag) {
 		// TODO Auto-generated method stub
 		return false;
@@ -140,25 +147,25 @@ public class MySqlDataProvider implements IDataProvider {
 	@Override
 	public void lightenRecords(List<IRecordID> recordIDs) {
 		// TODO Auto-generated method stub
-
+		
 	}
 
 	@Override
-	public void saveMetaRecord(IMetaRecord metaRecord) {
+	public IRecord readFromXML(String xmlRecord) {
 		// TODO Auto-generated method stub
+		return null;
+	}
 
+	@Override
+	public IRecord readFromXMLdocument(Document xmlDocumentRecord) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Override
 	public void saveRecord(IRecord record) {
 		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void saveTagRecord(ITagRecord tagRecord) {
-		// TODO Auto-generated method stub
-
+		
 	}
 
 }
