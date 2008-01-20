@@ -18,22 +18,30 @@
  * along with Replics.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package replics.impl.data;
+package replics.data;
 
-import replics.data.IRecordID;
+import org.w3c.dom.Document;
 
-public class RecordID implements IRecordID {
+/**
+ * Interface for the representation of a full record
+ * (civil part and meta part)
+ * 
+ * @author Jean-Baptiste Giraudeau
+ */
+public interface IFullRecord extends IRecord {
 
-	@Override
-	public String getGroupID() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public int getRecordID() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
+	/**
+	 * Returns the meta record part of this full record 
+	 * 
+	 * @return an IMetaRecord object.
+	 */
+	public IMetaRecord getMetaRecord();
+	
+	/**
+	 * Returns the XML representation without the meta part.
+	 * 
+	 * @return an (encrypted) XML document.
+	 */
+	public Document getXMLcivilRecord();
+	
 }

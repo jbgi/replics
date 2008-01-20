@@ -21,24 +21,44 @@
 package replics.data;
 
 import java.io.Serializable;
-import java.util.Date; 
+import java.util.Date;
 
 /**
- * 
+ * Interface for tag records. A tag qualify a record with some information (most
+ * import one is if the record have been saved on the backup server). Note that
+ * any member of a group can emit a tag for a record of this group, not just the
+ * owner. Also multiple tags can be associated with a single record.
  * 
  * @author Jean-Baptiste Giraudeau
  */
-public interface ITagRecord extends Serializable {
+public interface ITagRecord extends IRecord {
 
-    public Date getDate ();
-    
-    public String getPeerID ();
+	/**
+	 * Returns optional comments about the tag.
+	 * 
+	 * @return a comment string or null.  
+	 */
+	public String getComments();
 
-    public IRecordID getRecordID();
+	/**
+	 * Returns the date of the first creation of this tag. (not the date of local replication of the record)
+	 * 
+	 * @return date of creation of the tag.
+	 */
+	public Date getDate();
 
-    public Tag getTag ();
+	/**
+	 * The ID of the peer that first emitted the tag.
+	 * 
+	 * @return a peer ID string.
+	 */
+	public String getPeerID();
 
-    public String getTagHash ();
+	/**
+	 * Returns the tag itself.
+	 * 
+	 * @return the tag of this tag record.
+	 */
+	public Tag getTag();
 
 }
-

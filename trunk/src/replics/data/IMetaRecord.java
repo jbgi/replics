@@ -20,23 +20,32 @@
 
 package replics.data;
 
-import java.io.Serializable; 
-import java.util.Date; 
-
 /**
- * 
+ * Interface for the representation of the meta part of a record. The meta part
+ * define bio-metric data to identify a unique individual, but it should not be
+ * possible to easily associated those bio-metric data with a particular known
+ * individual.
  * 
  * @author Jean-Baptiste Giraudeau
  */
-public interface IMetaRecord extends Serializable {
+public interface IMetaRecord extends IRecord {
 
-	public Date getDate ();
-	
-    public byte[] getFingerPrint ();
+	/**
+	 * Return a binary representation of a finger-print, It can be the
+	 * finger-print image itself or the result of a hash function on this image
+	 * (better, more difficult).
+	 * 
+	 * @return a byte array of the finger-print representation.
+	 */
+	public byte[] getFingerPrint();
 
-    public int getHeight ();
-
-    public IRecordID getRecordID();
+	/**
+	 * Return the height of the individual, used for the creation of a sample
+	 * pool before the time-consuming finger-print comparison.
+	 * Probably, better criteria should be considered for this first selection.
+	 * 
+	 * @return the height of the individual.
+	 */
+	public float getHeight();
 
 }
-
