@@ -27,13 +27,13 @@ package replics.data;
  */
 public enum Tag {
 
-    DUPLICATION_ATTEMPT,
-
-    SECURED,
-
     CANCELLED,
 
-    INVALID;
+    DUPLICATION_ATTEMPT,
+
+    INVALID,
+
+    SECURED;
 
 }
 

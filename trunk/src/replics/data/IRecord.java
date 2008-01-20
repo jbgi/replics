@@ -29,11 +29,11 @@ import java.io.Serializable;
  */
 public interface IRecord extends Serializable {
 	
-	public IRecordID getRecordID();
-
-    public String getCryptedXML ();
+	public String getCryptedXML ();
 
     public IMetaRecord getMetaRecord ();
+
+    public IRecordID getRecordID();
 
 }
 
