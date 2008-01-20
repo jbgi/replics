@@ -30,15 +30,15 @@ import java.util.Date;
  */
 public interface ITagRecord extends Serializable {
 
-    public String getTagHash ();
+    public Date getDate ();
     
-    public IRecordID getRecordID();
-
     public String getPeerID ();
 
-    public Date getDate ();
+    public IRecordID getRecordID();
 
     public Tag getTag ();
+
+    public String getTagHash ();
 
 }
 

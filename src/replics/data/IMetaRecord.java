@@ -30,13 +30,13 @@ import java.util.Date;
  */
 public interface IMetaRecord extends Serializable {
 
-	public IRecordID getRecordID();
+	public Date getDate ();
 	
-    public Date getDate ();
-
     public byte[] getFingerPrint ();
 
     public int getHeight ();
+
+    public IRecordID getRecordID();
 
 }
 
