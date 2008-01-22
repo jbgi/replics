@@ -27,31 +27,30 @@ import replics.data.Tag;
 
 public class TagRecord extends Record implements ITagRecord {
 
-	@Override
+
 	public String getComments() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
+	
 	public Date getDate() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
+	
 	public String getPeerID() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	public Tag getTag() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
+	
 	public String getHash() {
 		// TODO Auto-generated method stub
 		return null;
