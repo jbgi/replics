@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+    Document   : groupAdverstissement.xml
+    Created on : January 22, 2008, 8:43 AM
+    Author     : jbg
+    Description:
+        Purpose of the document follows.
+-->
+
+<ReplicationService>
+<mips></mips>
+<records>
+        <first-id></first-id>
+        <last-id></last-id>
+</records>
+<tags>
+        <last-hash></last-hash>
+</tags>
+</ReplicationService>
