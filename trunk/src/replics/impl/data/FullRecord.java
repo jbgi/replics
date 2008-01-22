@@ -27,19 +27,16 @@ import replics.data.IMetaRecord;
 
 public class FullRecord extends Record implements IFullRecord {
 
-	@Override
 	public String getHash() {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
-	@Override
+	
 	public IMetaRecord getMetaRecord() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	public Document getXMLcivilRecord() {
 		// TODO Auto-generated method stub
 		return null;
