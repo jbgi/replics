@@ -1,6 +1,6 @@
 package replics.net.messages;
 
-public interface IPeerGroupDiscoveryQuery {
+public interface IPeerGroupDiscoveryQuery extends IMessage {
 
 	
 	

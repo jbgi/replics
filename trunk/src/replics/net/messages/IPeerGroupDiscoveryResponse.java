@@ -1,5 +1,5 @@
 package replics.net.messages;
 
-public interface IPeerGroupDiscoveryResponse {
+public interface IPeerGroupDiscoveryResponse extends IMessage {
 
 }

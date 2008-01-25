@@ -1,5 +1,9 @@
 package replics.net.messages;
 
-public interface IRecordQuery {
+import replics.data.IRecordID;
 
+public interface IRecordQuery extends IMessage {
+
+	public IRecordID getAskedRecordID(); 
+	
 }
