@@ -20,11 +20,19 @@
 
 package replics.net;
 
+import java.util.Observer;
+import java.util.List;
+import net.jxta.peergroup.PeerGroup;
+
+
 /**
  * Management of the synchronization of tags and replicats between peers inside a replication group.
  *
  * @author 
  */
-public interface IReplicationGroupService {
+public interface IReplicsPeerGroup extends PeerGroup, Observer {
+
+	public List<IPeerID> getPeers();
+	
 
 }
