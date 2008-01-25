@@ -1,14 +1,15 @@
 package replics.net.messages;
 
-public interface IPeerGroupAdvertisement {
+import replics.data.IRecordID;
+import net.jxta.document.Document;
 
-	public String getPeerID();
+public interface IPeerGroupAdvertisement extends IMessage {
 	
-	public String getGroupID();
+	public IRecordID getLastRecordID();
 	
-	public int getLastRecordID();
+	public void setLastRecordID(IRecordID lastRecord);
 	
-	public int getFirstRecordID();
+	public IRecordID getFirstRecordID();
 	
 	public String getLastTagHash();
 	
