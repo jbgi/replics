@@ -25,6 +25,12 @@ import replics.data.IRecordID;
 public class RecordID implements IRecordID {
 
 	@Override
+	public boolean equals() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+	
+	@Override
 	public String getGroupID() {
 		// TODO Auto-generated method stub
 		return null;
