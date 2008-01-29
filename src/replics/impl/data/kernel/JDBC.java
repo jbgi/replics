@@ -13,7 +13,7 @@ public class JDBC {
   public static void main(String args[]) throws SQLException {
 	  
 	Connect();
-	CreateDB();
+	//CreateDB();
 	
     }
   
@@ -21,7 +21,8 @@ public class JDBC {
     private static void Connect() {
 	try {
 	      Class.forName("com.mysql.jdbc.Driver").newInstance();
-	      con = DriverManager.getConnection("localhost:gin","gin","secret");
+	      String url ="jdbc:mysql://localhost:3306/gin";
+	      con = DriverManager.getConnection(url,"gin","secret");
 
 	      if(!con.isClosed())
 	        System.out.println("Successfully connected to MySQL server using TCP/IP...");
