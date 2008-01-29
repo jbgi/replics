@@ -18,35 +18,22 @@
  * along with Replics.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package replics.data;
+package replics.net;
 
-import java.io.Serializable;
+import java.util.Observer;
+
+import replics.data.IRecordID;
+import replics.data.ITagRecord;
 
 /**
- * Very light structure used to identify a specific record in the whole network.
- * For a given group ID, the record id is a unique number. this number is
- * auto-incremented at each creation of a record.
- * 
- * @author Jean-Baptiste Giraudeau
+ * Management of the synchronization of tags and replicats between peers inside a replication group.
+ *
+ * @author 
  */
-public interface IRecordID extends Serializable {
-
-	/**
-	 * Group ID getter. A group ID is a 66 character long string.
-	 *  
-	 * @return the ID of the group owner for the record. 
-	 */
-	public String getGroupID();
-
-	
-	/**
-	 * Record ID getter, identifying a record inside a given group 
-	 * (at most 8 digits).
-	 * 
-	 * @return the ID of the record inside the group.
-	 */
-	public int getRecordID();
-	
-	public boolean equals();
-
+public interface IReplicationGroupService extends Observer {
+        
+        public void updateNewRecord(IRecordID records) ;
+        
+        public void updateNewTag(ITagRecord tagRecord) ;
+        
 }

@@ -21,6 +21,7 @@
 package replics.impl.data;
 
 import java.util.List;
+import java.util.Observable;
 
 import org.w3c.dom.Document;
 
@@ -31,7 +32,7 @@ import replics.data.IRecordID;
 import replics.data.ITagRecord;
 import replics.data.Tag;
 
-public class MySqlDataProvider implements IDataProvider {
+public class MySqlDataProvider extends Observable implements IDataProvider {
 
 	
 	public void initialize() {

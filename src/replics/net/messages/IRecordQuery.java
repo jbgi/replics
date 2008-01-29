@@ -4,6 +4,8 @@ import replics.data.IRecordID;
 
 public interface IRecordQuery extends IMessage {
 
-	public IRecordID getAskedRecordID(); 
+	
+	
+	public IRecordID getAskedRecordID();
 	
 }
