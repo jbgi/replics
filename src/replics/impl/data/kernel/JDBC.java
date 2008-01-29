@@ -13,7 +13,8 @@ public class JDBC {
   public static void main(String args[]) throws SQLException {
 	  
 	Connect();
-	//CreateDB();
+	CreateDB();
+	Disconnect();
 	
     }
   
@@ -29,20 +30,25 @@ public class JDBC {
 
 	    } catch(Exception e) {
 	      System.err.println("Exception: " + e.getMessage());
-	    } finally {
-	      try {
-	        if(con != null)
-	          con.close();
-	      } catch(SQLException e) {}
+	    }
+
+    }
+    
+    private static void Disconnect() {
+    	
+    	      try {
+    	        if(con != null)
+    	          con.close();
+    	      } catch(SQLException e) {}
+    	
 	
-	    }	
     }
     
     private static void CreateDB() throws SQLException {
     	
     	Statement stmt = con.createStatement();
     	
-    	stmt.executeUpdate( "CREATE TABLE olpc ("  +
+    	stmt.executeUpdate( "CREATE TABLE test1 ("  +
     	         "recordId    	INT    		NOT NULL, "    +
     	         "groupId    	VARCHAR(100)    NOT NULL, "    +
     	         "hash    		VARCHAR(100)    NOT NULL, "    +
@@ -53,6 +59,7 @@ public class JDBC {
     	         "PRIMARY KEY( recordID, groupId )"                  +
     	                                            ")" );
     	
+    	System.out.println("Table successfully created...");
       }
 }
 
