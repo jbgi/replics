@@ -2,9 +2,12 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Replics-BouncyCastle"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Replics-Jxta"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Replics-SWT"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Replics-MySQL"/>
+	<classpathentry kind="lib" path="lib/jxta/javax.servlet.jar"/>
+	<classpathentry kind="lib" path="lib/jxta/jxta.jar" sourcepath="lib/jxta/jxta-src.zip"/>
+	<classpathentry kind="lib" path="lib/jxta/jxta-tutorials.jar" sourcepath="lib/jxta/jxta-tutorials-src.zip"/>
+	<classpathentry kind="lib" path="lib/jxta/org.mortbay.jetty.jar"/>
+	<classpathentry kind="lib" path="lib/bouncycastle/bcprov.jar" sourcepath="lib/bouncycastle/bcprov-src.zip"/>
+	<classpathentry kind="lib" path="lib/mysql/mysql-connector.jar" sourcepath="lib/mysql/mysql-connector-src.zip"/>
+	<classpathentry kind="lib" path="lib/swt/win32-win32/swt.jar" sourcepath="lib/swt/win32-win32/swt-src.zip"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
