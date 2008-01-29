@@ -22,8 +22,8 @@ public class JDBC {
     private static void Connect() {
 	try {
 	      Class.forName("com.mysql.jdbc.Driver").newInstance();
-	      String url ="jdbc:mysql://localhost:3306/gin";
-	      con = DriverManager.getConnection(url,"gin","secret");
+	      String url ="jdbc:mysql://localhost:3306/special_tacou";
+	      con = DriverManager.getConnection(url,"tacou","tagisy6");
 
 	      if(!con.isClosed())
 	        System.out.println("Successfully connected to MySQL server using TCP/IP...");
