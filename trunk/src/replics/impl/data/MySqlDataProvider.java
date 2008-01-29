@@ -42,7 +42,6 @@ public class MySqlDataProvider extends Observable implements IDataProvider {
 	
 	
 	public IRecordID createRecordID(String groupID, int recordID) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
