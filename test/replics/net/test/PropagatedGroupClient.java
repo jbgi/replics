@@ -24,6 +24,8 @@ import net.jxta.document.MimeMediaType;
 
 import java.io.File;
 import java.io.IOException;
+
+import replics.net.test.PropagatedGroupServer;
 import net.jxta.document.Element;
 import net.jxta.document.StructuredDocumentFactory;
 import net.jxta.impl.peer.PeerInfoServiceInterface;
@@ -202,3 +204,4 @@ public class PropagatedGroupClient implements PipeMsgListener {
 		}
 	}
 }
+
