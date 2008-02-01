@@ -27,19 +27,16 @@ import replics.data.IRecordID;
 
 public abstract class Record implements IRecord {
 
-	@Override
 	public IRecordID getRecordID() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	public String getXML() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	public Document getXMLdocument() {
 		// TODO Auto-generated method stub
 		return null;

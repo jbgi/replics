@@ -24,19 +24,16 @@ import replics.data.IMetaRecord;
 
 public class MetaRecord extends Record implements IMetaRecord {
 
-	@Override
 	public byte[] getFingerPrint() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	public float getHeight() {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
-	@Override
 	public String getHash() {
 		// TODO Auto-generated method stub
 		return null;
