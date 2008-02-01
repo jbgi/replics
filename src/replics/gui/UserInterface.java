@@ -95,6 +95,17 @@ public class UserInterface {
 
 		button.addSelectionListener(new org.eclipse.swt.events.SelectionAdapter() {
 			public void widgetSelected(org.eclipse.swt.events.SelectionEvent e) {
+				
+				String cmd= "C:/Program Files/Dorgem/Dorgem.exe";
+                try {  
+                   	 Runtime r = Runtime.getRuntime();  
+                     Process p = r.exec(cmd);  
+                     p.waitFor();
+                     System.out.println(p.exitValue());
+                }catch(Exception ex) {  
+                System.out.println("erreur d'execution " + cmd + e.	toString());  
+                }  
+     
 				Confirmation confirmation = new Confirmation();
 				confirmation.label7.setText(text.getText());
 				confirmation.label8.setText(text1.getText());
@@ -115,6 +126,7 @@ public class UserInterface {
 		buttonPrec.addSelectionListener(new SelectionAdapter(){
 			public void widgetSelected(SelectionEvent e){
 				sShell.setVisible(false);
+				
 				Welcome welcome=new Welcome();
 				welcome.setVisible(true);
 			}
