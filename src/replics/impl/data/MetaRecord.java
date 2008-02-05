@@ -40,18 +40,28 @@ public class MetaRecord extends Record implements IMetaRecord {
 	}
 
 	public byte[] getFingerPrint() {
-		// TODO Auto-generated method stub
-		return null;
+		return fingerPrint;
+	}
+
+	public void setFingerPrint(byte[] fingerPrint) {
+		this.fingerPrint = fingerPrint;
 	}
 
 	public float getHeight() {
-		// TODO Auto-generated method stub
-		return 0;
+		return height;
+	}
+
+	public void setHeight(float height) {
+		this.height = height;
 	}
 
 	public String getHash() {
-		// TODO Auto-generated method stub
-		return null;
+		return hash;
 	}
+
+	public void setHash(String hash) {
+		this.hash = hash;
+	}
+
 
 }
