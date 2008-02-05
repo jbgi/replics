@@ -1,15 +1,16 @@
 package replics.gui;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 
+import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
-import org.eclipse.swt.graphics.Point;
-import org.eclipse.swt.widgets.Shell;
-import org.eclipse.swt.widgets.Display;
-import org.eclipse.swt.widgets.Label;
-import org.eclipse.swt.SWT;
+import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.Button;
+import org.eclipse.swt.widgets.Label;
+import org.eclipse.swt.widgets.Shell;
 import org.jdom.output.Format;
 import org.jdom.output.XMLOutputter;
 
@@ -31,10 +32,12 @@ public class Confirmation {
 	public Label label12 = null;
 	private Button button = null;
 	private Button button1 = null;
+	private String picURL = null;
 	/**
 	 * @param args
 	 */
-	public Confirmation(){
+	public Confirmation(String picURL){
+		this.picURL = picURL;
 		createSShell();
 		sShell.open();
 	
@@ -66,7 +69,7 @@ public class Confirmation {
 	private void createSShell() {
 		sShell = new Shell();
 		sShell.setText("Shell");
-		sShell.setSize(new org.eclipse.swt.graphics.Point(353,222));
+		sShell.setSize(new org.eclipse.swt.graphics.Point(353,300));
 		label = new Label(sShell, SWT.NONE);
 		label.setBounds(new org.eclipse.swt.graphics.Rectangle(4,6,222,19));
 		label.setText("Confirmez-vous les informations suivantes ?");
@@ -106,7 +109,23 @@ public class Confirmation {
 		label12 = new Label(sShell, SWT.NONE);
 		label12.setBounds(new org.eclipse.swt.graphics.Rectangle(132,136,102,13));
 		label12.setText("Label");
-		button1 = new Button(sShell, SWT.NONE);
+		
+		
+		Image image = null;
+		try {
+        	
+        	image = new Image(sShell.getDisplay(), new FileInputStream(picURL));
+
+        } catch (FileNotFoundException e1) {
+
+          e1.printStackTrace();
+        }
+		
+        Label label13= new Label(sShell, SWT.NONE);
+        label13.setImage(image);
+        label13.setBounds(new org.eclipse.swt.graphics.Rectangle(70,156,100,100));
+		
+        button1 = new Button(sShell, SWT.NONE);
 		button1.setBounds(new org.eclipse.swt.graphics.Rectangle(199,158,65,20));
 		button1.setText("annuler");
 		button1.addSelectionListener(new SelectionAdapter(){
