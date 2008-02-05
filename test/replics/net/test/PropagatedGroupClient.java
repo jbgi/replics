@@ -127,7 +127,7 @@ public class PropagatedGroupClient implements PipeMsgListener {
 		NetworkManager manager = null;
 
 		try {
-			manager = new NetworkManager(NetworkManager.ConfigMode.ADHOC,
+			manager = new NetworkManager(NetworkManager.ConfigMode.RENDEZVOUS,
 					"PropagatedPipeClient", new File(new File(".cache"),
 							"PropagatedPipeClient").toURI());
 			manager.startNetwork();
