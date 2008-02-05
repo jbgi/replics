@@ -23,6 +23,10 @@ package replics.impl.data;
 import replics.data.IMetaRecord;
 
 public class MetaRecord extends Record implements IMetaRecord {
+	
+	byte[] fingerPrint;
+	float height;
+	String hash;
 
 	public byte[] getFingerPrint() {
 		// TODO Auto-generated method stub
