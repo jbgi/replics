@@ -1,18 +1,11 @@
 package replics.gui;
-import java.io.*;
-import java.io.IOException;
-import org.jdom.*;
-import org.jdom.output.*;
+import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
-import org.eclipse.swt.graphics.Point;
-import org.eclipse.swt.widgets.Shell;
-import org.eclipse.swt.widgets.Display;
-import org.eclipse.swt.widgets.Label;
-import org.eclipse.swt.SWT;
-import org.eclipse.swt.widgets.Text;
 import org.eclipse.swt.widgets.Button;
-import org.eclipse.swt.custom.CLabel;
+import org.eclipse.swt.widgets.Label;
+import org.eclipse.swt.widgets.Shell;
+import org.eclipse.swt.widgets.Text;
 
 public class UserInterface {
 
@@ -97,16 +90,20 @@ public class UserInterface {
 			public void widgetSelected(org.eclipse.swt.events.SelectionEvent e) {
 				
 				String cmd= "C:/Program Files/Dorgem/Dorgem.exe";
-                try {  
-                   	 Runtime r = Runtime.getRuntime();  
+				auxThread thread = new auxThread();
+				thread.start();
+				
+				try {  
+                	 Runtime r = Runtime.getRuntime();  
                      Process p = r.exec(cmd);  
                      p.waitFor();
                      System.out.println(p.exitValue());
+                     
                 }catch(Exception ex) {  
                 System.out.println("erreur d'execution " + cmd + e.	toString());  
                 }  
      
-				Confirmation confirmation = new Confirmation();
+				Confirmation confirmation = new Confirmation(thread.getURL());
 				confirmation.label7.setText(text.getText());
 				confirmation.label8.setText(text1.getText());
 				confirmation.label9.setText(text2.getText());
