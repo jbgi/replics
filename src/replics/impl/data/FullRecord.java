@@ -26,7 +26,11 @@ import replics.data.IFullRecord;
 import replics.data.IMetaRecord;
 
 public class FullRecord extends Record implements IFullRecord {
-
+	
+	String hash;
+	IMetaRecord metaRecord;
+	Document xmlCivilRecord;
+	
 	public String getHash() {
 		// TODO Auto-generated method stub
 		return null;
