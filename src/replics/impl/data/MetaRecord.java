@@ -28,6 +28,17 @@ public class MetaRecord extends Record implements IMetaRecord {
 	float height;
 	String hash;
 
+	public MetaRecord() {
+		super();
+	}
+
+	public MetaRecord(byte[] fingerPrint, float height, String hash) {
+		super();
+		this.fingerPrint = fingerPrint;
+		this.height = height;
+		this.hash = hash;
+	}
+
 	public byte[] getFingerPrint() {
 		// TODO Auto-generated method stub
 		return null;
