@@ -45,18 +45,26 @@ public class FullRecord extends Record implements IFullRecord {
 	}
 
 	public String getHash() {
-		// TODO Auto-generated method stub
-		return null;
+		return hash;
 	}
-	
+
+	public void setHash(String hash) {
+		this.hash = hash;
+	}
+
 	public IMetaRecord getMetaRecord() {
-		// TODO Auto-generated method stub
-		return null;
+		return metaRecord;
+	}
+
+	public void setMetaRecord(IMetaRecord metaRecord) {
+		this.metaRecord = metaRecord;
 	}
 
 	public Document getXMLcivilRecord() {
-		// TODO Auto-generated method stub
-		return null;
+		return xmlCivilRecord;
 	}
 
+	public void setXmlCivilRecord(Document xmlCivilRecord) {
+		this.xmlCivilRecord = xmlCivilRecord;
+	}
 }
