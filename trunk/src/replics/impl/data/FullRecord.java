@@ -31,6 +31,19 @@ public class FullRecord extends Record implements IFullRecord {
 	IMetaRecord metaRecord;
 	Document xmlCivilRecord;
 	
+	
+	public FullRecord() {
+		super();
+	}
+
+	public FullRecord(String hash, IMetaRecord metaRecord,
+			Document xmlCivilRecord) {
+		super();
+		this.hash = hash;
+		this.metaRecord = metaRecord;
+		this.xmlCivilRecord = xmlCivilRecord;
+	}
+
 	public String getHash() {
 		// TODO Auto-generated method stub
 		return null;
