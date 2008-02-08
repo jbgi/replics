@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="src" path="test"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="lib" path="lib/jxta/javax.servlet.jar"/>
 	<classpathentry kind="lib" path="lib/jxta/jxta.jar" sourcepath="lib/jxta/jxta-src.zip"/>
@@ -17,5 +18,13 @@
 	<classpathentry kind="lib" path="lib/jdom/xerces.jar"/>
 	<classpathentry kind="lib" path="lib/jdom/xml-apis.jar"/>
 	<classpathentry kind="con" path="SWT_CONTAINER/PLATFORM"/>
+	<classpathentry kind="lib" path="lib/swanspp/bcel.jar"/>
+	<classpathentry kind="lib" path="lib/swanspp/bsh.jar"/>
+	<classpathentry kind="lib" path="lib/swanspp/derby.jar"/>
+	<classpathentry kind="lib" path="lib/swanspp/derbytools.jar"/>
+	<classpathentry kind="lib" path="lib/swanspp/jargs.jar"/>
+	<classpathentry kind="lib" path="lib/swanspp/jython.jar"/>
+	<classpathentry kind="lib" path="lib/swanspp/log4j.jar"/>
+	<classpathentry kind="lib" path="lib/swanspp/swanspp.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
