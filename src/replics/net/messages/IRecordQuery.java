@@ -5,6 +5,11 @@ import replics.data.IRecordID;
 public interface IRecordQuery extends IMessage {
 
 	
-	public IRecordID getAskedRecordID();
+	/**
+	 * @return the missing RecordID
+	 */
+	public IRecordID getRecordID();
+	
+	
 	
 }

@@ -10,4 +10,10 @@ public interface IMessage extends Cloneable {
 	
 	public Document getDocument();
 	
+	public int getHops();
+	
+	public void setGroupId ();
+	
+	public void setDocument(); 
+	
 }
