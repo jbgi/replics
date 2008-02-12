@@ -10,7 +10,8 @@ public class Insert {
 	 
 	 public void Insert1(Byte SQLData[]) throws SQLException{
 		
-		  	Statement stmt = con.createStatement();
+		  	
+		 	Statement stmt = con.createStatement();
 		  	stmt.executeUpdate("INSERT INTO olpc VALUES " + SQLData[0] );
 		  	
 	 }

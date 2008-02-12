@@ -31,9 +31,26 @@ import replics.data.IRecord;
 import replics.data.IRecordID;
 import replics.data.ITagRecord;
 import replics.data.Tag;
+import javax.sql.ConnectionPoolDataSource;
+import javax.sql.PooledConnection;
+
+
 
 public class MySqlDataProvider extends Observable implements IDataProvider {
 
+	public javax.sql.ConnectionPoolDataSource getDataSource(String bindName){
+		
+        javax.sql.ConnectionPoolDataSource ds = null;
+		
+        try{							
+                  ds = (javax.sql.ConnectionPoolDataSource) ctx.lookup(bindName);
+        }catch(Exception e){
+             System.out.println("Error in JNDISetup:getDataSource() : "+e.getMessage());
+             e.printStackTrace();
+        }
+        return ds;
+		
+   }
 	
 	public void initialize() {
 		// TODO Auto-generated method stub

@@ -31,6 +31,7 @@ import java.io.Serializable;
  */
 public interface IRecordID extends Serializable {
 
+	
 	/**
 	 * Group ID getter. A group ID is a 66 character long string.
 	 *  
@@ -45,6 +46,8 @@ public interface IRecordID extends Serializable {
 	 * 
 	 * @return the ID of the record inside the group.
 	 */
+	
+	
 	public int getRecordID();
 	
 	public boolean equals();
