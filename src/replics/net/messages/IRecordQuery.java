@@ -4,12 +4,12 @@ import replics.data.IRecordID;
 
 public interface IRecordQuery extends IMessage {
 
-	
-	/**
-	 * @return the missing RecordID
-	 */
 	public IRecordID getRecordID();
 	
+	public void setRecordID(IRecordID recordID);
 	
+	public void setIsFullRecordQuery(boolean isFullRecordQuery);
 	
+	public boolean isFullRecordQuery();
+
 }

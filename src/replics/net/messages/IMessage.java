@@ -1,19 +1,40 @@
 package replics.net.messages;
 
-import net.jxta.document.Document;
+import java.util.Collection;
+
+import replics.net.IGroupID;
+import replics.net.IPeerID;
+
+//import net.jxta.document.Document;
 
 public interface IMessage extends Cloneable {
 
-	public String getGroupID();
+	public IGroupID getGroupID(); 
 	
-	public String getPeerID();
+	public void setGroupId(IGroupID groupID);
 	
-	public Document getDocument();
+	public void setSourcePeerID(IPeerID peerID);
+	
+	public IPeerID getSourcePeerID();
+	
+	public void setAddrPeerIDs(Collection<IPeerID> peerIDs);
+	
+	public Collection<IPeerID> getAddrPeerIDs();
+	
+	// specifique jxta
+	//public Document getDocument();
 	
 	public int getHops();
 	
-	public void setGroupId ();
+	public void setHops();
 	
-	public void setDocument(); 
+	public int getTTL();
+	
+	public void setTTL();
+	
+	
+	
+	// specifique jxta
+	//public void setDocument(); 
 	
 }
