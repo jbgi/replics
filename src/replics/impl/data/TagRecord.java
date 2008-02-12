@@ -28,32 +28,52 @@ import replics.data.Tag;
 public class TagRecord extends Record implements ITagRecord {
 
 
+	String comments;
+	Date date;
+	String peerID;
+	Tag tag;
+	String hash;
+	
+	
+	
+	public TagRecord(String comments, Date date, String peerID, Tag tag,
+			String hash) {
+		super();
+		this.comments = comments;
+		this.date = date;
+		this.peerID = peerID;
+		this.tag = tag;
+		this.hash = hash;
+	}
+
+
+	
 	public String getComments() {
 		// TODO Auto-generated method stub
-		return null;
+		return comments;
 	}
 
 	
 	public Date getDate() {
 		// TODO Auto-generated method stub
-		return null;
+		return date;
 	}
 
 	
 	public String getPeerID() {
 		// TODO Auto-generated method stub
-		return null;
+		return peerID;
 	}
 
 	public Tag getTag() {
 		// TODO Auto-generated method stub
-		return null;
+		return tag;
 	}
 
 	
 	public String getHash() {
 		// TODO Auto-generated method stub
-		return null;
+		return hash;
 	}
 
 }
