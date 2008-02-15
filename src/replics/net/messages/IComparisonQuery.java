@@ -2,15 +2,27 @@ package replics.net.messages;
 
 import replics.impl.data.RecordID;
 
-public interface IComparisonQuery {
+/**
+ * Interface used by a peer to send comparison queries
+ * 
+ * @author Mickaël Kerfant
+ *
+ */
+public interface IComparisonQuery extends IMessage {
 
-	// renvoi le peerID de celui qui demande la comparaison
-	//public String getPeerID();
-	
-	// renvoi le premier recordID de l'intervale de comparaison
+	/**
+	 * This method returns the first RecordID object of the comparison interval 
+	 * 
+	 * @return a RecordID object
+	 */
 	public RecordID getFirstRecordID();
 	
-	// retourne le dernier RecordID de l'intervale à comparer
+	/**
+	 * 
+	 * This method returns the last RecordID object of the comparison interval 
+	 * 
+	 * @return a RecordID object
+	 */
 	public RecordID getLastRecordID();
 	
 	
