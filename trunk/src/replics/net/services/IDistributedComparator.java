@@ -27,8 +27,12 @@ import replics.net.protocol.IMessageListener;
  * 
  * @author 
  */
-public interface IMetaRecordComparator extends IMessageListener {
+public interface IDistributedComparator {
 
 	public void checkMetaRecord(IMetaRecord metaRecord);
+	
+	public void checkMetaRecord(IMetaRecord metaRecord, IComparisonListener listener);
+	
+	public void registerListener(IComparisonListener listener);
 	
 }

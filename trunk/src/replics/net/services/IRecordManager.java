@@ -20,7 +20,8 @@
 
 package replics.net.services;
 
-/**crée le contenu du message, qu'il envoie au groupe service
+/**
+ * crÃ©e le contenu du message, qu'il envoie au groupe service
  *
  * @author 
  */
