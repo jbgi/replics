@@ -36,13 +36,13 @@ public class Confirmation {
 	/**
 	 * @param args
 	 */
-	/*public Confirmation(String picURL){
+	public Confirmation(String picURL){
 		this.picURL = picURL;
 		createSShell();
 		sShell.open();
 	
 
-	}*/
+	}
 	public Confirmation(){
 		createSShell();
 		sShell.open();
@@ -109,7 +109,7 @@ public class Confirmation {
 		censusPlaceF.setBounds(new org.eclipse.swt.graphics.Rectangle(150,135,100,15));
 		
 		
-		/*Image image = null;
+		Image image = null;
 		try {
         	
         	image = new Image(sShell.getDisplay(), new FileInputStream(picURL));
@@ -122,7 +122,7 @@ public class Confirmation {
         Label label13= new Label(sShell, SWT.NONE);
         label13.setImage(image);
         label13.setBounds(new org.eclipse.swt.graphics.Rectangle(70,156,100,100));
-		*/
+		
         button1 = new Button(sShell, SWT.NONE);
 		button1.setBounds(new org.eclipse.swt.graphics.Rectangle(200,150,65,20));
 		button1.setText("annuler");
