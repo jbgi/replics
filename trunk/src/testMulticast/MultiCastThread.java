@@ -27,10 +27,12 @@ public class MultiCastThread extends Thread {
 	
 	public void run() {
 		try {
-			receive();
-			//send();
-			//receive();
-			//send();
+			while(true) { 
+				//receive();
+				send();
+				receive();
+				//send();
+			}
 		} 
 		catch(Exception e) {
 			System.err.println("erreur send or receive:"+e.getMessage());
@@ -48,7 +50,7 @@ public class MultiCastThread extends Thread {
 		System.out.println("sent said "+id+":"+(loopIndex++)+" :"+new String(packet.getData()));
 		socket.send(packet);
 		//return new String(packet.getData());
-		receive();
+		//receive();
 	}
 	
 	public void receive() throws IOException {
@@ -64,7 +66,7 @@ public class MultiCastThread extends Thread {
 		// OK, I'm done talking - leave the group...
 		socket.leaveGroup(group);
 		//return new String(recv.getData());		
-		send();
+		//send();
 	}
 	
 	public static void main(String[] args) {
