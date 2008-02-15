@@ -20,10 +20,18 @@
 
 package replics.net.services;
 
+import replics.data.IMetaRecord;
+
 /**
  *
  * @author 
  */
 public interface ILocalComparator {
 
+	public void checkMetaRecord(IMetaRecord metaRecord);
+	
+	public void checkMetaRecord(IMetaRecord metaRecord, IComparisonListener listener);
+	
+	public void registerListener(IComparisonListener listener);
+	
 }
