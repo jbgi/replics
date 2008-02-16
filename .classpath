@@ -23,5 +23,7 @@
 	<classpathentry kind="lib" path="lib/swanspp/jython.jar"/>
 	<classpathentry kind="lib" path="lib/swanspp/log4j.jar"/>
 	<classpathentry kind="lib" path="lib/swanspp/swanspp.jar"/>
+	<classpathentry kind="con" path="org.eclipse.pde.core.requiredPlugins"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Replics-SWT"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
