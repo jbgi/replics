@@ -38,19 +38,7 @@ import javax.sql.PooledConnection;
 
 public class MySqlDataProvider extends Observable implements IDataProvider {
 
-	public javax.sql.ConnectionPoolDataSource getDataSource(String bindName){
-		
-        javax.sql.ConnectionPoolDataSource ds = null;
-		
-        try{							
-                  ds = (javax.sql.ConnectionPoolDataSource) ctx.lookup(bindName);
-        }catch(Exception e){
-             System.out.println("Error in JNDISetup:getDataSource() : "+e.getMessage());
-             e.printStackTrace();
-        }
-        return ds;
-		
-   }
+	
 	
 	public void initialize() {
 		// TODO Auto-generated method stub
@@ -63,7 +51,7 @@ public class MySqlDataProvider extends Observable implements IDataProvider {
 	}
 
 	
-	public ITagRecord createTagRecord(IRecordID recordID, String PeerID, Tag tag) {
+	public ITagRecord createTagRecord(IRecordID recordID, String PeerID, Tag tag, String comment) {
 		// TODO Auto-generated method stub
 		return null;
 	}

@@ -1,5 +1,6 @@
 package replics.gui;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -13,6 +14,8 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Shell;
 import org.jdom.output.Format;
 import org.jdom.output.XMLOutputter;
+
+import replics.facade.FacadeDB;
 
 public class Confirmation {
 
@@ -30,8 +33,8 @@ public class Confirmation {
 	public Label dateOfBirthF = null;
 	public Label placeOfBirthF = null;
 	public Label censusPlaceF = null;
-	private Button button = null;
-	private Button button1 = null;
+	private Button confirmer = null;
+	private Button annuler = null;
 	private String picURL = null;
 	/**
 	 * @param args
@@ -123,19 +126,19 @@ public class Confirmation {
         label13.setImage(image);
         label13.setBounds(new org.eclipse.swt.graphics.Rectangle(70,156,100,100));
 		
-        button1 = new Button(sShell, SWT.NONE);
-		button1.setBounds(new org.eclipse.swt.graphics.Rectangle(200,150,65,20));
-		button1.setText("annuler");
-		button1.addSelectionListener(new SelectionAdapter(){
+        annuler = new Button(sShell, SWT.NONE);
+		annuler.setBounds(new org.eclipse.swt.graphics.Rectangle(200,150,65,20));
+		annuler.setText("annuler");
+		annuler.addSelectionListener(new SelectionAdapter(){
 			public void widgetSelected(SelectionEvent e){
 				sShell.close();
 				}
 		});
-		button = new Button(sShell, SWT.NONE);
-		button.setBounds(new org.eclipse.swt.graphics.Rectangle(275,150,65,20));
-		button.setText("confirmer");
+		confirmer = new Button(sShell, SWT.NONE);
+		confirmer.setBounds(new org.eclipse.swt.graphics.Rectangle(275,150,65,20));
+		confirmer.setText("confirmer");
 		
-		button.addSelectionListener(new org.eclipse.swt.events.SelectionAdapter() {
+		confirmer.addSelectionListener(new org.eclipse.swt.events.SelectionAdapter() {
 			public void widgetSelected(org.eclipse.swt.events.SelectionEvent e) {
 				JDOM1 xml1= new JDOM1();
 				xml1.ville.addContent(censusPlaceF.getText());
@@ -145,15 +148,27 @@ public class Confirmation {
 				xml1.date_of_birth.addContent(dateOfBirthF.getText());
 				xml1.place_of_birth.addContent(placeOfBirthF.getText());
 				xml1.ID.addContent(firstNameF.getText()+lastNameF.getText());
+				
 				try
 		        {
 		           //On utilise ici un affichage classique avec getPrettyFormat()
 		           XMLOutputter sortie = new XMLOutputter(Format.getPrettyFormat());
 		           //Remarquez qu'il suffit simplement de cr�er une instance de FileOutputStream
 		           //avec en argument le nom du fichier pour effectuer la s�rialisation.
-		           sortie.output(xml1.document, new FileOutputStream("ex3.xml"));
+		           sortie.output(xml1.document, new FileOutputStream("data/fileXML.xml"));
+		        
+		        
 		        }
 		        catch (java.io.IOException y){}
+		        
+		        FacadeDB fdb = new FacadeDB();
+		        String name = new String(firstName.getText().concat(lastName.getText()));
+		        int hash = name.hashCode();
+		        float height = (float) 0.0;
+		        //if(fdb.confirmNewIdentity(hash))
+		        	//fdb.saveData("groupId",hash, hash, new File("data/fileXML.xml"),new File("data/photo.jpg"),new File("data/fingerPrint.fp"), height );
+		        
+		        
 		        sShell.close();
 		     }
 		});

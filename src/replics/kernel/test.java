@@ -1,4 +1,4 @@
-package replics.impl.data.kernel;
+package replics.kernel;
 
 public class test {
 
