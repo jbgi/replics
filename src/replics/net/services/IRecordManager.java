@@ -20,11 +20,39 @@
 
 package replics.net.services;
 
+import replics.data.IRecord;
+import replics.data.IRecordID;
+import replics.data.ITagRecord;
+
 /**
- * crée le contenu du message, qu'il envoie au groupe service
+ * create a new Record's content and send it to the group 
+ * Management of the synchronization of tags and replicates between peers inside a replication group.
  *
  * @author 
  */
 public interface IRecordManager {
-
+	
+	/**
+	 * 
+	 * Ask the groups the missing records  
+	 * notified : the peerGroupID is contained in the RecordId
+	 * 
+	 * @param records
+	 */
+	public void askForRecords(IRecordID records) ;
+    
+    /**
+     * Ask the peer the missing tags
+     * @param tagRecord
+     */
+    public void askForTags(ITagRecord tagRecord) ;
+    
+    /**
+     * Add a record from a local registration or from a response of a peer (loading of missing records)
+     * @param record
+     * @return
+     */
+    public boolean addNewRecord(IRecord record);
+    
+    
 }

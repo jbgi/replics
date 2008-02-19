@@ -21,7 +21,7 @@
 package replics.net.services;
 
 /**
- * Manage authorization of authicated peers to join the replication group.
+ * Manage authorization of authenticated peers to join the replication group.
  * 
  * @author 
  */
