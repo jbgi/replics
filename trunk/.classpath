@@ -25,5 +25,7 @@
 	<classpathentry kind="lib" path="lib/swanspp/swanspp.jar"/>
 	<classpathentry kind="con" path="org.eclipse.pde.core.requiredPlugins"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Replics-SWT"/>
+	<classpathentry kind="lib" path="lib/xstream/xpp3_min.jar"/>
+	<classpathentry kind="lib" path="lib/xstream/xstream.jar" sourcepath="lib/xstream/xstream-src.zip"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

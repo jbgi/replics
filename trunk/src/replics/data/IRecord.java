@@ -42,7 +42,7 @@ public interface IRecord extends Serializable {
 	public String getHash();
 
 	/**
-	 * Return the ID of the record this tag record is qualifying. This
+	 * Return the ID of the record this tag record or meta-record is qualifying. This
 	 * corresponding record does not necessarily exist in the database.
 	 * 
 	 * @return an IRecordID object.

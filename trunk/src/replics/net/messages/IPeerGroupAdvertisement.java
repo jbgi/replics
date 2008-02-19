@@ -1,7 +1,6 @@
 package replics.net.messages;
 
 import replics.data.IRecordID;
-import net.jxta.document.Document;
 
 public interface IPeerGroupAdvertisement extends IMessage {
 	
