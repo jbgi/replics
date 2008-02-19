@@ -23,6 +23,7 @@ package replics.net.services;
 import replics.data.IRecord;
 import replics.data.IRecordID;
 import replics.data.ITagRecord;
+import replics.data.Tag;
 
 /**
  * create a new Record's content and send it to the group 
@@ -53,6 +54,10 @@ public interface IRecordManager {
      * @return
      */
     public boolean addNewRecord(IRecord record);
+    
+    public boolean addNewTag(ITagRecord tagRecord);
+    
+    public boolean addNewTag(IRecordID recordID, Tag tag);
     
     
 }
