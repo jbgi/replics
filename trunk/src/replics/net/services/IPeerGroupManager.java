@@ -19,10 +19,9 @@ public interface IPeerGroupManager extends IMessageListener{
 	 */
 	public Collection<IPeerID> getPeerIDOfJoinedGroups(IGroupID groupID);
 	
-	/**
-	 * @return true if the peer is updated which means that he has the last Record
-	 */
-	public boolean isUpdated(IPeerGroupAdvertisement message);
+	public IPeerID getLocalPeerID();
+	
+	public IGroupID getLocalGroupID();
 	
 	/**
 	 * 
@@ -46,14 +45,4 @@ public interface IPeerGroupManager extends IMessageListener{
 	 */
 	public IPeerGroupAdvertisement getLastGroupAdvertisement(IGroupID groupID, IPeerID peerID);
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-
 }
