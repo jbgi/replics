@@ -40,9 +40,6 @@ public interface IDataProvider {
 	 * instance. It must setup all necessary connections and connections pools
 	 * with the database.
 	 */
-	
-	
-	
 	public void initialize();
 
 	/**
