@@ -33,6 +33,11 @@ public interface IDistributedComparator {
 	
 	public void checkMetaRecord(IMetaRecord metaRecord, IComparisonListener listener);
 	
+	/**
+	 * give the list of all the services which needs comparison's results
+	 * @param listener
+	 * 
+	 */
 	public void registerListener(IComparisonListener listener);
 	
 }

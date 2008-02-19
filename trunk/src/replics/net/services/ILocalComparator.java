@@ -27,6 +27,8 @@ import replics.data.IMetaRecord;
  * @author 
  */
 public interface ILocalComparator {
+	
+
 
 	public void checkMetaRecord(IMetaRecord metaRecord);
 	
