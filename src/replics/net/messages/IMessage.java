@@ -19,6 +19,9 @@ public interface IMessage extends Cloneable {
 	
 	public void setAddrPeerIDs(Collection<IPeerID> peerIDs);
 	
+	/**
+	 * @return les ID de tous les destinataires
+	 */
 	public Collection<IPeerID> getAddrPeerIDs();
 	
 	// specifique jxta

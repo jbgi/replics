@@ -6,4 +6,5 @@ public interface ITagQuery extends IMessage{
 	public void setPreviousTagHash(String tagHash);
 	
 	public String getPreviousTagHash();
+	
 }
