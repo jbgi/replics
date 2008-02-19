@@ -8,54 +8,54 @@ import replics.net.messages.IMessage;
 
 public abstract class Message implements IMessage {
 
+	protected IPeerID sourcePeerID;
+	protected Collection<IPeerID> addrPeerIDs;
+	protected IGroupID groupID;
+	protected int hops;
+	protected int ttl;
+	
+	/**
+	 * @see IMessage
+	 */
 	public Collection<IPeerID> getAddrPeerIDs() {
-		// TODO Auto-generated method stub
-		return null;
+		return addrPeerIDs;
 	}
 
 	public IGroupID getGroupID() {
-		// TODO Auto-generated method stub
-		return null;
+		return groupID;
 	}
 
 	public int getHops() {
-		// TODO Auto-generated method stub
-		return 0;
+		return hops;
 	}
 
 	public IPeerID getSourcePeerID() {
-		// TODO Auto-generated method stub
-		return null;
+		return sourcePeerID;
 	}
 
 	public int getTTL() {
-		// TODO Auto-generated method stub
-		return 0;
+		return ttl;
 	}
 
-	public void setAddrPeerIDs(Collection<IPeerID> peerIDs) {
-		// TODO Auto-generated method stub
-
+	public void setSourcePeerID(IPeerID sourcePeerID) {
+		this.sourcePeerID = sourcePeerID;
 	}
 
-	public void setGroupId(IGroupID groupID) {
-		// TODO Auto-generated method stub
-
+	public void setAddrPeerIDs(Collection<IPeerID> addrPeerIDs) {
+		this.addrPeerIDs = addrPeerIDs;
 	}
 
-	public void setHops() {
-		// TODO Auto-generated method stub
-
+	public void setGroupID(IGroupID groupID) {
+		this.groupID = groupID;
 	}
 
-	public void setSourcePeerID(IPeerID peerID) {
-		// TODO Auto-generated method stub
-
+	public void setHops(int hops) {
+		this.hops = hops;
 	}
 
-	public void setTTL() {
-		// TODO Auto-generated method stub
-
+	public void setTTL(int ttl) {
+		this.ttl = ttl;
 	}
 
+	
 }

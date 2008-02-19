@@ -1,5 +1,8 @@
 package replics.net.messages;
 
+import replics.data.IMetaRecord;
+import replics.data.IRecordID;
+import replics.impl.data.MetaRecord;
 import replics.impl.data.RecordID;
 
 /**
@@ -13,18 +16,24 @@ public interface IComparisonQuery extends IMessage {
 	/**
 	 * This method returns the first RecordID object of the comparison interval 
 	 * 
-	 * @return a RecordID object
+	 * @return an IRecordID object
 	 */
-	public RecordID getFirstRecordID();
+	public IRecordID getFirstRecordID();
 	
 	/**
 	 * 
 	 * This method returns the last RecordID object of the comparison interval 
 	 * 
-	 * @return a RecordID object
+	 * @return an IRecordID object
 	 */
-	public RecordID getLastRecordID();
+	public IRecordID getLastRecordID();
 	
+	public void setFirstRecordID(IRecordID firstRecordID);
 	
+	public void setLastRecordID(IRecordID lastRecordID);
+	
+	public IMetaRecord getMetaRecord();
+	
+	public void setMetaRecord(MetaRecord metaRecord);
 	
 }
