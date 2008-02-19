@@ -1,4 +1,4 @@
-package replics.impl.data.kernel;
+package replics.kernel;
 
 import java.sql.Connection;
 import java.sql.ResultSet;

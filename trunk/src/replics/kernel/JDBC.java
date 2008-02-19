@@ -1,4 +1,4 @@
-package replics.impl.data.kernel;
+package replics.kernel;
 
 
 import java.io.File;
@@ -7,6 +7,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
 
@@ -15,6 +16,10 @@ import replics.impl.data.MySqlDataProvider;
 public class JDBC {
 	
   static Connection con = null;
+  
+  public JDBC(){
+	  Connect();
+  }
 
   public static void main(String args[]) throws SQLException, IOException {
 	  
@@ -32,7 +37,7 @@ public class JDBC {
 	fingerPrint.createNewFile();
 	float height = (float) 1.65 ;
 	
-	Insert.saveRecord(con, groupID, IDU, hash, xml, photo, fingerPrint, height);
+	saveRecord(groupID, IDU, hash, xml, photo, fingerPrint, height);
 	
 	Disconnect();
 	
@@ -88,4 +93,35 @@ public class JDBC {
     	
     	System.out.println("Table successfully created...");
       }
+
+	public void confirmIdentity(int i) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	public static void saveRecord(String idGroup, Integer IDU, String hash, File xml, File photo, File fingerPrint, float height) throws SQLException, FileNotFoundException{
+		
+	  	String sql = "INSERT INTO test1 (groupId, IDU, hash, xml, photo, fingerPrint, height) VALUES(?,?,?,?,?,?,?)";
+        PreparedStatement pstmt = con.prepareStatement(sql);
+        
+        pstmt.setString(1,idGroup);
+        pstmt.setInt(2,IDU);
+        pstmt.setString(3,hash);
+        
+        FileInputStream is = new FileInputStream(xml);
+        pstmt.setAsciiStream(4, is, xml.length());
+        
+        is = new FileInputStream(photo);
+        pstmt.setBinaryStream(5, is, photo.length());
+        
+        is = new FileInputStream(fingerPrint);
+        pstmt.setBinaryStream(6, is, fingerPrint.length());
+        
+        pstmt.setFloat(7,height);
+        
+	  	pstmt.executeUpdate();
+	  	
+	  	System.out.println("Data successfully added to the DB");
+	  	
+ }
 }

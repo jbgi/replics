@@ -66,7 +66,7 @@ public interface IDataProvider {
 	 * 
 	 * @return an ITagRecord object.
 	 */
-	public ITagRecord createTagRecord(IRecordID recordID, String PeerID, Tag tag);
+	public ITagRecord createTagRecord(IRecordID recordID, String PeerID, Tag tag, String comment);
 
 	/**
 	 * Deletes a list of records from the local database.
