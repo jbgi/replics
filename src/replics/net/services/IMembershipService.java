@@ -18,7 +18,7 @@
  * along with Replics.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package replics.net;
+package replics.net.services;
 
 /**
  * Manage authorization of authicated peers to join the replication group.
