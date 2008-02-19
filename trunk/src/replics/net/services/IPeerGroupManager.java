@@ -5,6 +5,7 @@ import java.util.Collection;
 import replics.net.IGroupID;
 import replics.net.IPeerID;
 import replics.net.messages.IPeerGroupAdvertisement;
+import replics.net.messages.IRecordStatus;
 import replics.net.protocol.IMessageListener;
 
 /**
@@ -37,12 +38,10 @@ public interface IPeerGroupManager extends IMessageListener{
 	// il faudra implémenter une méthode en interne qui indique quels st les voisins joignables par le peer ex public boolean isMyNeighbor(TTL ttl)
 	
 	/**
+	 * If isUpdated returns false then that method is called and that returns the Last PeerGouprAdvertisement 
 	 * @param groupID
 	 * @param peerID
-	 * If isUpdated returns false then that method is called and that returns the Last PeerGouprAdvertisement 
-	 * 
-	 *
 	 */
-	public IPeerGroupAdvertisement getLastGroupAdvertisement(IGroupID groupID, IPeerID peerID);
+	public IRecordStatus getRecordStatus(IGroupID groupID, IPeerID peerID);
 	
 }
