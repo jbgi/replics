@@ -45,6 +45,7 @@ public interface IRecordManager {
     /**
      * Ask the peer the missing tags
      * @param tagRecord
+     * 
      */
     public void askForTags(ITagRecord tagRecord) ;
     
@@ -55,8 +56,17 @@ public interface IRecordManager {
      */
     public boolean addNewRecord(IRecord record);
     
+    /**Add a new tagRecord 
+     * @param tagRecord
+     * @return true if the addition occurred well and false else
+     */
     public boolean addNewTag(ITagRecord tagRecord);
     
+    /**Add a new tag
+     * @param recordID
+     * @param tag
+     * @return true if the addition occurred well and false else
+     */
     public boolean addNewTag(IRecordID recordID, Tag tag);
     
     
