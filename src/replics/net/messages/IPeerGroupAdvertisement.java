@@ -4,16 +4,8 @@ import replics.data.IRecordID;
 
 public interface IPeerGroupAdvertisement extends IMessage {
 	
-	public IRecordID getLastRecordID();
+	public IRecordStatus getRecordStatus();
 	
-	public void setLastRecordID(IRecordID lastRecordID);
-	
-	public IRecordID getFirstRecordID();
-	
-	public void setFirstRecordID(IRecordID firstRecordID);
-	
-	public String getLastTagHash();
-	
-	public void setLastTagHash();
-		
+	public void setRecordStatus(IRecordStatus recordStatus);
+
 }
