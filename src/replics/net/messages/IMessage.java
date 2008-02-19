@@ -11,7 +11,7 @@ public interface IMessage extends Cloneable {
 
 	public IGroupID getGroupID(); 
 	
-	public void setGroupId(IGroupID groupID);
+	public void setGroupID(IGroupID groupID);
 	
 	public void setSourcePeerID(IPeerID peerID);
 	
@@ -26,11 +26,11 @@ public interface IMessage extends Cloneable {
 	
 	public int getHops();
 	
-	public void setHops();
+	public void setHops(int hops);
 	
 	public int getTTL();
 	
-	public void setTTL();
+	public void setTTL(int ttl);
 	
 	
 	
