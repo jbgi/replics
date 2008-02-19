@@ -1,8 +1,14 @@
 package replics.impl.net.services;
 
+import replics.IServiceManager;
 import replics.net.services.IRecordQuotaManager;
 
-public class RecordQuotaManager implements IRecordQuotaManager {
+public class RecordQuotaManager extends ReplicsService implements IRecordQuotaManager {
+
+	public RecordQuotaManager(IServiceManager serviceManager) {
+		super(serviceManager);
+		// TODO Auto-generated constructor stub
+	}
 
 	public int getNumberOfPossibleRecord() {
 		// TODO Auto-generated method stub
