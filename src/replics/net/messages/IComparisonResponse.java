@@ -1,45 +1,69 @@
 package replics.net.messages;
 
+import replics.data.IRecordID;
 import replics.impl.data.RecordID;
 
 /**
  * 
  * Interface used to respond to comparison queries
  * 
- * @author Mickaëk Kerfant
+ * @author Mickaël Kerfant
  *
  */
 public interface IComparisonResponse extends IMessage {
 
 	/**
 	 * this method returns the first RecordID object of the comparison interval 
-	 * 
-	 * @return a RecordID object
+	 * @return an IRecordID object
 	 */
-	public RecordID getFirstRecordID();
+	public IRecordID getFirstRecordID();
 	
 	/**
-	 * 
 	 * this method returns the last RecordID object of the comparison interval
-	 * 
-	 * @return a RecordID object
+	 * @return an IRecordID object
 	 */
-	public RecordID getLastRecordID();
-
+	public IRecordID getLastRecordID();
+	
 	/**
-	 * 
-	 * This method tests if a duplicate is found in the comparison interval
-	 * 
+	 * This method returns the IRecordID of the record compared
+	 * @return an IRecordID object
+	 */
+	public IRecordID getComparedRecordID();
+	
+	/**
+	 * this method changes the first RecordID object of the comparison interval 
+	 * @return an IRecordID object
+	 */
+	public void setFirstRecordID(IRecordID firstRecordID);
+	
+	/**
+	 * this method changes the last RecordID object of the comparison interval
+	 * @return an IRecordID object
+	 */
+	public void setLastRecordID(IRecordID lastRecordID);
+	
+	/**
+	 * This method changes the IRecordID of the record compared
+	 * @return an IRecordID object
+	 */
+	public void setComparedRecordID(IRecordID comparedRecordID);
+	
+	/** 
+	 * This method tests if a duplicate is found in the comparison interval 
 	 * @return true if a duplicate is found during the comparison
 	 */
 	public boolean isPositiveComparison();
 	
 	/**
-	 * 
-	 * This method returns the RecordID object which is duplicated or null if there is no duplicate
-	 * 
-	 * @return a RecordID object
+	 * This method returns the IRecordID object which is duplicated or null if there is no duplicate
+	 * @return an IRecordID object
 	 */
-	public RecordID getPositiveRecordID();
+	public IRecordID getPositiveRecordID();
+	
+	/**
+	 * Self explained (cf Jean-Baptiste Giraudeau)
+	 * @return an IRecordID object
+	 */
+	public void setPositiveRecordID(IRecordID positiveRecordID);
 	
 }
