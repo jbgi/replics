@@ -16,4 +16,8 @@ public interface IRecordStatus {
 	
 	public void setLastTagHash();
 	
+	public String getPreviousTagHash();
+	
+	public void setPreviousTagHash();
+	
 }
