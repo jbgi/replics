@@ -6,6 +6,6 @@ public interface IPeerGroupAdvertisement extends IMessage {
 	
 	public IRecordStatus getRecordStatus();
 	
-	public void setRecordStatus(IRecordStatus recordStatus);
+	public void setRecordStatus(IRecordStatus recordStatus); 
 
 }
