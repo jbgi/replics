@@ -14,9 +14,6 @@ public abstract class Message implements IMessage {
 	protected int hops;
 	protected int ttl;
 	
-	/**
-	 * @see IMessage
-	 */
 	public Collection<IPeerID> getAddrPeerIDs() {
 		return addrPeerIDs;
 	}
