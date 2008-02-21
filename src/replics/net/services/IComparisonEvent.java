@@ -1,6 +1,6 @@
 package replics.net.services;
 
-import replics.data.IRecordID;
+import replics.ids.IRecordID;
 
 public interface IComparisonEvent {
 

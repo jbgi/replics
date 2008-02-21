@@ -1,7 +1,7 @@
 package replics.net.messages;
 
 import replics.data.IRecord;
-import replics.data.IRecordID;
+import replics.ids.IRecordID;
 
 public interface IRecordMessage extends IMessage {
 

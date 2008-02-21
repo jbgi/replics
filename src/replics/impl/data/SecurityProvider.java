@@ -22,17 +22,11 @@ package replics.impl.data;
 
 import org.w3c.dom.Document;
 
+import replics.IServiceManager;
 import replics.data.IRecord;
 import replics.data.ISecurityProvider;
 
-public class SecurityProvider implements ISecurityProvider {
-
-	
-	public void initialize() {
-		// TODO Auto-generated method stub
-
-	}
-	
+public class SecurityProvider implements ISecurityProvider {	
 	
 	public boolean checkPassword(String password) {
 		// TODO Auto-generated method stub
@@ -90,6 +84,12 @@ public class SecurityProvider implements ISecurityProvider {
 	public String publicEncrypt(String unCryptedText) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+
+	public void initialize(IServiceManager serviceManager) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

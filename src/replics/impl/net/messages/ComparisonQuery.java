@@ -2,10 +2,10 @@ package replics.impl.net.messages;
 
 import java.util.Collection;
 
-import replics.data.IRecordID;
+import replics.ids.IGroupID;
+import replics.ids.IPeerID;
+import replics.ids.IRecordID;
 import replics.impl.data.MetaRecord;
-import replics.net.IGroupID;
-import replics.net.IPeerID;
 import replics.net.messages.IComparisonQuery;
 
 public class ComparisonQuery extends Message implements IComparisonQuery {

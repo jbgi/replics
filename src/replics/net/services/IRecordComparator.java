@@ -1,8 +1,9 @@
 package replics.net.services;
 
+import replics.IReplicsService;
 import replics.data.IMetaRecord;
 
-public interface IRecordComparator {
+public interface IRecordComparator extends IReplicsService {
 
 	
 	/**

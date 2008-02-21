@@ -1,6 +1,6 @@
 package replics.impl.net.messages;
 
-import replics.data.IRecordID;
+import replics.ids.IRecordID;
 import replics.impl.data.MetaRecord;
 import replics.impl.data.RecordID;
 import replics.net.messages.IComparisonResponse;

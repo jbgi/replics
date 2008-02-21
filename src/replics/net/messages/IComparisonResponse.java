@@ -1,6 +1,6 @@
 package replics.net.messages;
 
-import replics.data.IRecordID;
+import replics.ids.IRecordID;
 import replics.impl.data.RecordID;
 
 /**

@@ -20,13 +20,14 @@
 
 package replics.net.services;
 
+import replics.IReplicsService;
 import replics.data.IMetaRecord;
 
 /**
  *
  * @author 
  */
-public interface ILocalComparator {
+public interface ILocalComparator extends IReplicsService {
 	
 
 

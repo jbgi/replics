@@ -23,6 +23,8 @@ package replics.data;
 import java.io.Serializable;
 import java.util.Date;
 
+import replics.ids.ITagID;
+
 /**
  * Interface for tag records. A tag qualify a record with some information (most
  * import one is if the record have been saved on the backup server). Note that
@@ -33,6 +35,8 @@ import java.util.Date;
  */
 public interface ITagRecord extends IRecord {
 
+	public ITagID getTagID();
+	
 	/**
 	 * Returns optional comments about the tag.
 	 * 
@@ -46,13 +50,6 @@ public interface ITagRecord extends IRecord {
 	 * @return date of creation of the tag.
 	 */
 	public Date getDate();
-
-	/**
-	 * The ID of the peer that first emitted the tag.
-	 * 
-	 * @return a peer ID string.
-	 */
-	public String getPeerID();
 
 	/**
 	 * Returns the tag itself.

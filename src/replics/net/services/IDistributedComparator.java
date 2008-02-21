@@ -20,6 +20,7 @@
 
 package replics.net.services;
 
+import replics.IReplicsService;
 import replics.data.IMetaRecord;
 import replics.net.protocol.IMessageListener;
 
@@ -27,7 +28,7 @@ import replics.net.protocol.IMessageListener;
  * 
  * @author 
  */
-public interface IDistributedComparator {
+public interface IDistributedComparator extends IReplicsService {
 
 	public void checkMetaRecord(IMetaRecord metaRecord);
 	
