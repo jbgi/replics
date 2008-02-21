@@ -1,5 +1,8 @@
 package replics.net.messages;
 
+import java.util.Map;
+
+import replics.ids.IPeerID;
 import replics.ids.IRecordID;
 import replics.ids.ITagID;
 
@@ -13,8 +16,6 @@ public interface IRecordStatus {
 	
 	public void setFirstRecordID(IRecordID firstRecordID);
 	
-	public ITagID getLastTagID();
-	
-	public void setLastTagID(ITagID tagID);
+	public Map<IPeerID, ITagID> getLastTagIDs();
 	
 }
