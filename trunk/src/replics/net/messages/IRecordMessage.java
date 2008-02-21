@@ -3,7 +3,7 @@ package replics.net.messages;
 import replics.data.IRecord;
 import replics.data.IRecordID;
 
-public interface IRecordResponse extends IMessage {
+public interface IRecordMessage extends IMessage {
 
 	public IRecordID getRecordID();
 	

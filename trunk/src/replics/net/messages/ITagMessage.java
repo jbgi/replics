@@ -2,7 +2,7 @@ package replics.net.messages;
 
 import replics.data.ITagRecord;
 
-public interface ITagResponse extends IMessage{
+public interface ITagMessage extends IMessage{
 
 	// dans le cas où l'on a pas de hash, on accepte null comme argument
 	public void setPreviousTagHash(String tagHash);
