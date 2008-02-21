@@ -2,8 +2,8 @@ package replics.net.messages;
 
 import java.util.Collection;
 
-import replics.net.IGroupID;
-import replics.net.IPeerID;
+import replics.ids.IGroupID;
+import replics.ids.IPeerID;
 
 //import net.jxta.document.Document;
 

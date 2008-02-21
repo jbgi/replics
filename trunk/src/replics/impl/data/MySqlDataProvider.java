@@ -25,65 +25,46 @@ import java.util.Observable;
 
 import org.w3c.dom.Document;
 
+import replics.IServiceManager;
 import replics.data.IDataProvider;
 import replics.data.IMetaRecord;
 import replics.data.IRecord;
-import replics.data.IRecordID;
 import replics.data.ITagRecord;
 import replics.data.Tag;
+import replics.ids.IGroupID;
+import replics.ids.IRecordID;
+import replics.ids.ITagID;
+
 import javax.sql.ConnectionPoolDataSource;
 import javax.sql.PooledConnection;
 
 
 
-public class MySqlDataProvider extends Observable implements IDataProvider {
-
-	
-	
-	public void initialize() {
-		// TODO Auto-generated method stub
-		
-	}
-	
-	
-	public IRecordID createRecordID(String groupID, int recordID) {
-		return null;
-	}
-
-	
-	public ITagRecord createTagRecord(IRecordID recordID, String PeerID, Tag tag, String comment) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
+public class MySqlDataProvider implements IDataProvider {
 	
 	public void deleteRecords(List<IRecordID> recordIDs) {
 		// TODO Auto-generated method stub
 		
 	}
-
 	
-	public List<IRecordID> findRecords(String groupID, Integer minRecordID,
+	public List<IRecordID> findRecords(IGroupID groupID, Integer minRecordID,
 			Integer maxRecordID, Float minHeight, Float maxHeight) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	
-	public List<IRecordID> findRecords(String groupID, Integer minRecordID,
+	public List<IRecordID> findRecords(IGroupID groupID, Integer minRecordID,
 			Integer maxRecordID, Tag hasTag, Tag hasNotTag) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-
-	public IRecordID getLastRecordIdForGroup(String groupID) {
+	public IRecordID getLastRecordIdForGroup(IGroupID groupID) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	
-	public ITagRecord getLastTagRecordForGroup(String groupID) {
+	public ITagRecord getLastTagRecordForGroup(IGroupID groupID) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -94,23 +75,23 @@ public class MySqlDataProvider extends Observable implements IDataProvider {
 	}
 
 	
-	public List<ITagRecord> getNextTagRecordsForGroup(
-			ITagRecord previousTagRecord, int numberOfTags) {
+	public List<ITagRecord> getNextTagRecordsForGroup(IGroupID groupID,
+			ITagID previousTagRecordID, int numberOfTags) {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
-
+	
 	public int getPossibleNewMetaRecord() {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
-	
+
 	public int getPossibleNewRecord() {
 		// TODO Auto-generated method stub
 		return 0;
 	}
+
 
 	public IRecord getRecord(IRecordID recordID) {
 		// TODO Auto-generated method stub
@@ -118,51 +99,41 @@ public class MySqlDataProvider extends Observable implements IDataProvider {
 	}
 
 	
-	public ITagRecord getTagRecord(String tagHash) {
+	public ITagRecord getTagRecord(IGroupID groupID, ITagID tagID) {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 	
 	public boolean hasMetaRecord(IRecordID recordID) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
-	
 	public boolean hasRecord(IRecordID recordID) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
 
-	public boolean hasTag(String hashTag) {
+	public boolean hasTag(IGroupID groupID, ITagID tagID) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
+	public void initialize(IServiceManager serviceManager) {
+		// TODO Auto-generated method stub
+		
+	}
 
 	public boolean isRecordTaggedWith(IRecordID recordID, Tag tag) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
-	
+
 	public void lightenRecords(List<IRecordID> recordIDs) {
 		// TODO Auto-generated method stub
 		
-	}
-
-
-	public IRecord readFromXML(String xmlRecord) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	
-	public IRecord readFromXMLdocument(Document xmlDocumentRecord) {
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 	public void saveRecord(IRecord record) {

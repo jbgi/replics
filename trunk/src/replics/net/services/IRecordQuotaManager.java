@@ -1,7 +1,6 @@
-/**
- * 
- */
 package replics.net.services;
+
+import replics.IReplicsService;
 
 /**
  * @author Virginie
@@ -9,7 +8,7 @@ package replics.net.services;
  * 
  *
  */
-public interface IRecordQuotaManager {
+public interface IRecordQuotaManager extends IReplicsService {
 	
 	/**
 	 * @return the number of possible new record, calculated from the free space available on the disk and the erasable records)

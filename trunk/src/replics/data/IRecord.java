@@ -21,16 +21,14 @@
 package replics.data;
 
 import java.io.Serializable;
-
-import org.w3c.dom.Document;
+import replics.ids.IRecordID;
 
 /**
- * Generic interface for all records, it extends Serializable but future version
- * will not, when XML serialization is fast and reliable.
+ * Generic interface for all records.
  * 
  * @author Jean-Baptiste Giraudeau
  */
-public interface IRecord extends Serializable {
+public interface IRecord {
 
 	/**
 	 * Return an hash string computed from all fields (SHA1 or MD5 hash
@@ -48,20 +46,5 @@ public interface IRecord extends Serializable {
 	 * @return an IRecordID object.
 	 */
 	public IRecordID getRecordID();
-
-	/**
-	 * Serialize the record using XML.
-	 * 
-	 * @return a string being a valid XML document.
-	 */
-	public String getXML();
-
-	/**
-	 * Return the XML document object for this record. Result is an already
-	 * parsed equivalent of getXML().
-	 * 
-	 * @return an XML document representation of this record.
-	 */
-	public Document getXMLdocument();
 
 }

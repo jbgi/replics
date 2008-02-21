@@ -23,7 +23,7 @@ package replics.impl.data;
 import org.w3c.dom.Document;
 
 import replics.data.IRecord;
-import replics.data.IRecordID;
+import replics.ids.IRecordID;
 
 public abstract class Record implements IRecord {
 

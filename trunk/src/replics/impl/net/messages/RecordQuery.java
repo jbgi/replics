@@ -1,6 +1,6 @@
 package replics.impl.net.messages;
 
-import replics.data.IRecordID;
+import replics.ids.IRecordID;
 import replics.net.messages.IRecordQuery;
 
 public class RecordQuery extends Message implements IRecordQuery {

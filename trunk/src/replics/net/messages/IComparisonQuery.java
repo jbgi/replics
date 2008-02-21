@@ -1,7 +1,7 @@
 package replics.net.messages;
 
 import replics.data.IMetaRecord;
-import replics.data.IRecordID;
+import replics.ids.IRecordID;
 import replics.impl.data.MetaRecord;
 import replics.impl.data.RecordID;
 

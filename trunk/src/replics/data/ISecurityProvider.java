@@ -22,18 +22,15 @@ package replics.data;
 
 import org.w3c.dom.Document;
 
+import replics.IReplicsService;
+
 /**
  * Interface for all integrity and encryption methods. 
  * Only one instance will be used in the application.
  * 
  * @author Jean-Baptiste Giraudeau
  */
-public interface ISecurityProvider {
-	
-	/**
-	 * Setup the public/private key and password hash from a configuration file. 
-	 */
-	public void initialize();
+public interface ISecurityProvider extends IReplicsService {
 
 	/**
 	 * Check that the hash of the given password match the one in the configuration file. Save the password for future encryption uses if correct.

@@ -24,6 +24,12 @@ import java.util.List;
 
 import org.w3c.dom.Document;
 
+import replics.IReplicsService;
+import replics.ids.IGroupID;
+import replics.ids.IPeerID;
+import replics.ids.IRecordID;
+import replics.ids.ITagID;
+
 /**
  * Interface used to retrieve and store information from/to the database.
  * 
@@ -33,40 +39,8 @@ import org.w3c.dom.Document;
  * 
  * @author Jean-Baptiste Giraudeau
  */
-public interface IDataProvider {
+public interface IDataProvider extends IReplicsService {
 
-	/**
-	 * This method is normally invoked just after the creation of an object
-	 * instance. It must setup all necessary connections and connections pools
-	 * with the database.
-	 */
-	public void initialize();
-
-	/**
-	 * Creates the corresponding IRecordID object.
-	 * 
-	 * @param groupID
-	 *            group owner ID of the record.
-	 * @param recordID
-	 *            ID of the record.
-	 * 
-	 * @return an IRecord object.
-	 */
-	public IRecordID createRecordID(String groupID, int recordID);
-
-	/**
-	 * Creates an ITagRecord object from given fields.
-	 * 
-	 * @param recordID
-	 *            ID of the record this tag qualify.
-	 * @param PeerID
-	 *            ID of the peer which has emitted this tag.
-	 * @param tag
-	 *            the tag itself.
-	 * 
-	 * @return an ITagRecord object.
-	 */
-	public ITagRecord createTagRecord(IRecordID recordID, String PeerID, Tag tag, String comment);
 
 	/**
 	 * Deletes a list of records from the local database.
@@ -94,7 +68,7 @@ public interface IDataProvider {
 	 * 
 	 * @return a List of IRecordID, ordered by increasing recordID.
 	 */
-	public List<IRecordID> findRecords(String groupID, Integer minRecordID,
+	public List<IRecordID> findRecords(IGroupID groupID, Integer minRecordID,
 			Integer maxRecordID, Float minHeight, Float maxHeight);
 
 	/**
@@ -115,7 +89,7 @@ public interface IDataProvider {
 	 * 
 	 * @return a List of IRecordID, ordered by increasing recordID.
 	 */
-	public List<IRecordID> findRecords(String groupID, Integer minRecordID,
+	public List<IRecordID> findRecords(IGroupID groupID, Integer minRecordID,
 			Integer maxRecordID, Tag hasTag, Tag hasNotTag);
 
 	/**
@@ -128,7 +102,7 @@ public interface IDataProvider {
 	 * @return an IRecordID object or null if no record for this group exist in
 	 *         the local database.
 	 */
-	public IRecordID getLastRecordIdForGroup(String groupID);
+	public IRecordID getLastRecordIdForGroup(IGroupID groupID);
 
 	/**
 	 * Retrieves the last tag record stored in the local database for a specific
@@ -138,7 +112,7 @@ public interface IDataProvider {
 	 *            ID of a group of record.
 	 * @return the last ITagRecord stored in the database for this group.
 	 */
-	public ITagRecord getLastTagRecordForGroup(String groupID);
+	public ITagRecord getLastTagRecordForGroup(IGroupID groupID);
 
 	/**
 	 * Retrieves the meta-record corresponding to this recordID.
@@ -163,8 +137,8 @@ public interface IDataProvider {
 	 * 
 	 * @return a list of tag record.
 	 */
-	public List<ITagRecord> getNextTagRecordsForGroup(
-			ITagRecord previousTagRecord, int numberOfTags);
+	public List<ITagRecord> getNextTagRecordsForGroup(IGroupID groupID,
+			ITagID previousTagRecordID, int numberOfTags);
 
 	/**
 	 * Calculates an estimation of the number of new meta-record that can still
@@ -200,7 +174,7 @@ public interface IDataProvider {
 	 * 
 	 * @return an ItagRecord object or null if not found.
 	 */
-	public ITagRecord getTagRecord(String tagHash);
+	public ITagRecord getTagRecord(IGroupID groupID, ITagID tagID);
 
 	/**
 	 * Test if a meta-record exists in the local database.
@@ -231,7 +205,7 @@ public interface IDataProvider {
 	 * 
 	 * @return true if the tag record exists.
 	 */
-	public boolean hasTag(String hashTag);
+	public boolean hasTag(IGroupID groupID, ITagID tagID);
 
 	/**
 	 * Test if a tag is associated with a record.
@@ -252,28 +226,6 @@ public interface IDataProvider {
 	 *            list of records to be lightened.
 	 */
 	public void lightenRecords(List<IRecordID> recordIDs);
-
-	/**
-	 * Create an IRecord (or IMetaRecord or ITagRecord) object from its XML
-	 * representation.
-	 * 
-	 * @param xmlRecord
-	 *            XML text.
-	 * 
-	 * @return an IRecord object or null if parsing error.
-	 */
-	public IRecord readFromXML(String xmlRecord);
-
-	/**
-	 * Create an IRecord (or IMetaRecord or ITagRecord) object from its XML
-	 * document representation.
-	 * 
-	 * @param xmlRecord
-	 *            XML document.
-	 * 
-	 * @return an IRecord object or null if parsing error.
-	 */
-	public IRecord readFromXMLdocument(Document xmlDocumentRecord);
 
 	/**
 	 * Store a record (or meta-record or tag record) in the local database.

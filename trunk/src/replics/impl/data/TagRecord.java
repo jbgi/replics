@@ -24,6 +24,7 @@ import java.util.Date;
 
 import replics.data.ITagRecord;
 import replics.data.Tag;
+import replics.ids.ITagID;
 
 public class TagRecord extends Record implements ITagRecord {
 
@@ -74,6 +75,11 @@ public class TagRecord extends Record implements ITagRecord {
 	public String getHash() {
 		// TODO Auto-generated method stub
 		return hash;
+	}
+
+	public ITagID getTagID() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

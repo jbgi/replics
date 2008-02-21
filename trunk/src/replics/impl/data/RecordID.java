@@ -20,7 +20,7 @@
 
 package replics.impl.data;
 
-import replics.data.IRecordID;
+import replics.ids.IRecordID;
 
 public class RecordID implements IRecordID {
 

@@ -2,8 +2,9 @@ package replics.net.services;
 
 import java.util.Collection;
 
-import replics.net.IGroupID;
-import replics.net.IPeerID;
+import replics.IReplicsService;
+import replics.ids.IGroupID;
+import replics.ids.IPeerID;
 import replics.net.messages.IPeerGroupAdvertisement;
 import replics.net.messages.IRecordStatus;
 import replics.net.protocol.IMessageListener;
@@ -13,7 +14,7 @@ import replics.net.protocol.IMessageListener;
  *IPeerGroupManager gives some information to other services on the state of the joined groups and 
  *the state of the synchronization with other peers
  */
-public interface IPeerGroupManager extends IMessageListener{
+public interface IPeerGroupManager extends IReplicsService, IMessageListener {
 	
 	/**
 	 * @return all the PeerId which are in the currently joined groups

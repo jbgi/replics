@@ -20,11 +20,13 @@
 
 package replics.net.services;
 
+import replics.IReplicsService;
+
 /**
  * Manage authorization of authenticated peers to join the replication group.
  * 
  * @author 
  */
-public interface IMembershipService {
+public interface IMembershipService extends IReplicsService {
 
 }

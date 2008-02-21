@@ -20,10 +20,11 @@
 
 package replics.net.services;
 
+import replics.IReplicsService;
 import replics.data.IRecord;
-import replics.data.IRecordID;
 import replics.data.ITagRecord;
 import replics.data.Tag;
+import replics.ids.IRecordID;
 
 /**
  * create a new Record's content and send it to the group 
@@ -31,7 +32,7 @@ import replics.data.Tag;
  *
  * @author 
  */
-public interface IRecordManager {
+public interface IRecordManager extends IReplicsService {
 	
 	/**
 	 * 

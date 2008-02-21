@@ -1,6 +1,7 @@
 package replics.net.messages;
 
-import replics.data.IRecordID;
+import replics.ids.IRecordID;
+import replics.ids.ITagID;
 
 public interface IRecordStatus {
 
@@ -12,12 +13,8 @@ public interface IRecordStatus {
 	
 	public void setFirstRecordID(IRecordID firstRecordID);
 	
-	public String getLastTagHash();
+	public ITagID getLastTagID();
 	
-	public void setLastTagHash();
-	
-	public String getPreviousTagHash();
-	
-	public void setPreviousTagHash();
+	public void setLastTagID(ITagID tagID);
 	
 }

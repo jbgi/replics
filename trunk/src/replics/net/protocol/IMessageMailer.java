@@ -1,9 +1,10 @@
 package replics.net.protocol;
 
+import replics.IReplicsService;
 import replics.net.messages.IMessage;
 import replics.net.messages.MessageType;
 
-public interface IMessageMailer {
+public interface IMessageMailer extends IReplicsService {
 
 	public void register(IMessageListener messageListener, MessageType typeOfMessage);
 	

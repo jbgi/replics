@@ -23,7 +23,24 @@ public class ReplicationManager extends ReplicsService implements IMessageListen
 		IRecordStatus remoteStatus = adv.getRecordStatus();
 		IRecordStatus localStatus = services.getPeerGroupManager().getRecordStatus(adv.getGroupID(), adv.getSourcePeerID());
 		
-		if (remoteStatus.getLastRecordID() != localStatus.ge)
+		if (remoteStatus.getLastRecordID().getRecordID() > localStatus.getLastRecordID().getRecordID()
+				|| remoteStatus.getFirstRecordID().getRecordID() < localStatus.getLastRecordID().getRecordID())
+		{
+			sendRecordMessage(localStatus);
+		}
+		else if (remoteStatus.getLastRecordID().getRecordID() < localStatus.getLastRecordID().getRecordID()
+				|| remoteStatus.getFirstRecordID().getRecordID() < localStatus.getLastRecordID().getRecordID())
+		
+		if (!remoteStatus.getLastTagHash().equals(localStatus.getLastTagHash()))
+		{
+			send
+		}
+			
+	}
+
+	private void sendRecordMessage(IRecordStatus localStatus) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

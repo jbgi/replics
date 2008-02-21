@@ -2,8 +2,8 @@ package replics.impl.net.messages;
 
 import java.util.Collection;
 
-import replics.net.IGroupID;
-import replics.net.IPeerID;
+import replics.ids.IGroupID;
+import replics.ids.IPeerID;
 import replics.net.messages.IMessage;
 
 public abstract class Message implements IMessage {
