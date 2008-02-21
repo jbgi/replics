@@ -1,12 +1,14 @@
 package replics.net.services;
 
+import java.net.InetAddress;
 import java.util.Collection;
+import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 import replics.IReplicsService;
 import replics.ids.IGroupID;
 import replics.ids.IPeerID;
-import replics.net.messages.IPeerGroupAdvertisement;
 import replics.net.messages.IRecordStatus;
 import replics.net.protocol.IMessageListener;
 
@@ -20,24 +22,30 @@ public interface IPeerGroupManager extends IReplicsService, IMessageListener {
 	/**
 	 * @return all the PeerId which are in the currently joined groups
 	 */
-	public Collection<IPeerID> getPeerIDOfJoinedGroups(IGroupID groupID);
+	public Set<IPeerID> getAllPeerIDsOfGroup(IGroupID groupID);
 	
 	public IPeerID getLocalPeerID();
 	
 	public IGroupID getLocalGroupID();
 	
-	public List<IPeerID> getMasterPeerIDs();
+	public Set<IPeerID> getMasterPeerIDs();
+	
+	public Set<IPeerID> getPeerIDs(IGroupID groupID, int maxHops, Date seenSince);
+	
+	public Set<IPeerID> getPossibleRoutesToPeer(IPeerID peerID);
+	
+	public InetAddress getPeerIP(IPeerID peerID);
 	
 	/**
 	 * 
 	 * @return the ID of the all groups which have been joined by a peer during his travel
 	 */
-	public Collection <IGroupID> getAllGroupIDs();
+	public Set<IGroupID> getAllGroupIDs();
 	
 	/**
 	 * @return the ID of the groups currently joined by the peer
 	 */
-	public Collection <IGroupID> getNeighborGroupIDs();
+	public Set<IGroupID> getNeighborGroupIDs();
 	
 	// il faudra implémenter une méthode en interne qui indique quels st les voisins joignables par le peer ex public boolean isMyNeighbor(TTL ttl)
 	
@@ -46,6 +54,6 @@ public interface IPeerGroupManager extends IReplicsService, IMessageListener {
 	 * @param groupID
 	 * @param peerID
 	 */
-	public IRecordStatus getRecordStatus(IGroupID groupID, List<IPeerID> peerIDs);
+	public IRecordStatus getRecordStatus(IGroupID groupID, Collection<IPeerID> peerIDs);
 	
 }

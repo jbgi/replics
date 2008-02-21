@@ -17,12 +17,12 @@ public interface IMessage extends Cloneable {
 	
 	public IPeerID getSourcePeerID();
 	
-	public void setAddrPeerIDs(Collection<IPeerID> peerIDs);
+	public void setAddrPeerIDs(IPeerID peerID);
 	
 	/**
-	 * @return les ID de tous les destinataires
+	 * @return ID du destinataire
 	 */
-	public Collection<IPeerID> getAddrPeerIDs();
+	public IPeerID getAddrPeerIDs();
 	
 	// specifique jxta
 	//public Document getDocument();
