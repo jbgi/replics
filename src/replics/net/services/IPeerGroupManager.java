@@ -1,6 +1,7 @@
 package replics.net.services;
 
 import java.util.Collection;
+import java.util.List;
 
 import replics.IReplicsService;
 import replics.ids.IGroupID;
@@ -25,6 +26,8 @@ public interface IPeerGroupManager extends IReplicsService, IMessageListener {
 	
 	public IGroupID getLocalGroupID();
 	
+	public List<IPeerID> getMasterPeerIDs();
+	
 	/**
 	 * 
 	 * @return the ID of the all groups which have been joined by a peer during his travel
@@ -43,6 +46,6 @@ public interface IPeerGroupManager extends IReplicsService, IMessageListener {
 	 * @param groupID
 	 * @param peerID
 	 */
-	public IRecordStatus getRecordStatus(IGroupID groupID, IPeerID peerID);
+	public IRecordStatus getRecordStatus(IGroupID groupID, List<IPeerID> peerIDs);
 	
 }

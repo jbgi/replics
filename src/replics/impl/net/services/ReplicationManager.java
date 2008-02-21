@@ -31,7 +31,7 @@ public class ReplicationManager extends ReplicsService implements IMessageListen
 		else if (remoteStatus.getLastRecordID().getRecordID() < localStatus.getLastRecordID().getRecordID()
 				|| remoteStatus.getFirstRecordID().getRecordID() < localStatus.getLastRecordID().getRecordID())
 		
-		if (!remoteStatus.getLastTagHash().equals(localStatus.getLastTagHash()))
+		if (!remoteStatus.getLastTagID().getTagID() > localStatus.getLastTagID().getTagID())
 		{
 			send
 		}
