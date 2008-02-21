@@ -9,13 +9,13 @@ import replics.net.messages.IMessage;
 public abstract class Message implements IMessage {
 
 	protected IPeerID sourcePeerID;
-	protected Collection<IPeerID> addrPeerIDs;
+	protected IPeerID addrPeerID;
 	protected IGroupID groupID;
 	protected int hops;
 	protected int ttl;
 	
-	public Collection<IPeerID> getAddrPeerIDs() {
-		return addrPeerIDs;
+	public IPeerID getAddrPeerID() {
+		return addrPeerID;
 	}
 
 	public IGroupID getGroupID() {
@@ -38,8 +38,8 @@ public abstract class Message implements IMessage {
 		this.sourcePeerID = sourcePeerID;
 	}
 
-	public void setAddrPeerIDs(Collection<IPeerID> addrPeerIDs) {
-		this.addrPeerIDs = addrPeerIDs;
+	public void setAddrPeerID(IPeerID addrPeerIDs) {
+		addrPeerIDs = addrPeerIDs;
 	}
 
 	public void setGroupID(IGroupID groupID) {
