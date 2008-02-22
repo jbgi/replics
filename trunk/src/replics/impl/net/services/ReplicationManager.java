@@ -5,14 +5,15 @@ import java.util.Map;
 import java.util.Set;
 import java.util.Map.Entry;
 
-import replics.IServiceManager;
 import replics.ids.IPeerID;
 import replics.ids.ITagID;
+import replics.impl.services.ReplicsService;
 import replics.net.messages.IMessage;
 import replics.net.messages.IPeerGroupAdvertisement;
 import replics.net.messages.IRecordStatus;
 import replics.net.messages.MessageType;
 import replics.net.protocol.IMessageListener;
+import replics.services.IServiceManager;
 
 public class ReplicationManager extends ReplicsService implements IMessageListener {
 

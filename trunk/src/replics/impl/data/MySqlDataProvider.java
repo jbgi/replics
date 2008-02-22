@@ -25,7 +25,6 @@ import java.util.Observable;
 
 import org.w3c.dom.Document;
 
-import replics.IServiceManager;
 import replics.data.IDataProvider;
 import replics.data.IMetaRecord;
 import replics.data.IRecord;
@@ -34,6 +33,7 @@ import replics.data.Tag;
 import replics.ids.IGroupID;
 import replics.ids.IRecordID;
 import replics.ids.ITagID;
+import replics.services.IServiceManager;
 
 import javax.sql.ConnectionPoolDataSource;
 import javax.sql.PooledConnection;

@@ -1,8 +1,8 @@
 package replics.net.protocol;
 
-import replics.IReplicsService;
 import replics.net.messages.IMessage;
 import replics.net.messages.MessageType;
+import replics.services.IReplicsService;
 
 public interface IMessageMailer extends IReplicsService {
 

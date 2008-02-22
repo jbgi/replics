@@ -1,6 +1,6 @@
 package replics.net.services;
 
-import replics.IReplicsService;
+import replics.services.IReplicsService;
 
 /**
  * @author Virginie

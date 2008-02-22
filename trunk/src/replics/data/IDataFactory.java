@@ -2,10 +2,10 @@ package replics.data;
 
 import org.w3c.dom.Document;
 
-import replics.IReplicsService;
 import replics.ids.IGroupID;
 import replics.ids.IPeerID;
 import replics.ids.IRecordID;
+import replics.services.IReplicsService;
 
 public interface IDataFactory extends IReplicsService{
 

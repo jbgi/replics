@@ -1,7 +1,8 @@
 package replics.impl.net.services;
 
-import replics.IServiceManager;
+import replics.impl.services.ReplicsService;
 import replics.net.services.IRecordQuotaManager;
+import replics.services.IServiceManager;
 
 public class RecordQuotaManager extends ReplicsService implements IRecordQuotaManager {
 

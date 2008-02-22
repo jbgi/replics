@@ -1,8 +1,8 @@
 package replics.net.messages;
 
-import replics.IReplicsService;
 import replics.ids.IGroupID;
 import replics.ids.IPeerID;
+import replics.services.IReplicsService;
 
 public interface IMessageFactory extends IReplicsService {
 

@@ -20,9 +20,9 @@
 
 package replics.net.services;
 
-import replics.IReplicsService;
 import replics.data.IMetaRecord;
 import replics.net.protocol.IMessageListener;
+import replics.services.IReplicsService;
 
 /**
  * 

@@ -22,7 +22,7 @@ package replics.data;
 
 import org.w3c.dom.Document;
 
-import replics.IReplicsService;
+import replics.services.IReplicsService;
 
 /**
  * Interface for all integrity and encryption methods. 

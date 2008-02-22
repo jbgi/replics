@@ -6,11 +6,11 @@ import java.util.Date;
 import java.util.List;
 import java.util.Set;
 
-import replics.IReplicsService;
 import replics.ids.IGroupID;
 import replics.ids.IPeerID;
 import replics.net.messages.IRecordStatus;
 import replics.net.protocol.IMessageListener;
+import replics.services.IReplicsService;
 
 /**
  * @author Virginie

@@ -22,9 +22,9 @@ package replics.impl.data;
 
 import org.w3c.dom.Document;
 
-import replics.IServiceManager;
 import replics.data.IRecord;
 import replics.data.ISecurityProvider;
+import replics.services.IServiceManager;
 
 public class SecurityProvider implements ISecurityProvider {	
 	
