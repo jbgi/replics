@@ -28,12 +28,29 @@ public interface IComparisonQuery extends IMessage {
 	 */
 	public IRecordID getLastRecordID();
 	
+	/**
+	 * This method modifies the ID of the First Record of the comparison interval
+	 * @param firstRecordID
+	 */
 	public void setFirstRecordID(IRecordID firstRecordID);
 	
+	/**
+	 * This method modifies the ID of the last Record of the comparison interval
+	 * @param lastRecordID
+	 */
 	public void setLastRecordID(IRecordID lastRecordID);
 	
+	/**
+	 * This method returns the MetaRecord of the comparison interval
+	 * @return an IMetaRecord object
+	 */
 	public IMetaRecord getMetaRecord();
 	
+	/**
+	 * This methods Modifies a MetaRecord
+	 * @param metaRecord
+	 */
+
 	public void setMetaRecord(MetaRecord metaRecord);
 	
 }
