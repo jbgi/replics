@@ -24,11 +24,11 @@ import java.util.List;
 
 import org.w3c.dom.Document;
 
-import replics.IReplicsService;
 import replics.ids.IGroupID;
 import replics.ids.IPeerID;
 import replics.ids.IRecordID;
 import replics.ids.ITagID;
+import replics.services.IReplicsService;
 
 /**
  * Interface used to retrieve and store information from/to the database.

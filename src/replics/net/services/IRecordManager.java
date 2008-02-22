@@ -20,11 +20,11 @@
 
 package replics.net.services;
 
-import replics.IReplicsService;
 import replics.data.IRecord;
 import replics.data.ITagRecord;
 import replics.data.Tag;
 import replics.ids.IRecordID;
+import replics.services.IReplicsService;
 
 /**
  * create a new Record's content and send it to the group 

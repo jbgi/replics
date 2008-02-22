@@ -1,4 +1,4 @@
-package replics;
+package replics.services;
 
 import replics.data.IDataProvider;
 import replics.net.protocol.IMessageMailer;

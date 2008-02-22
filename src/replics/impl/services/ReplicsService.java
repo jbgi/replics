@@ -1,7 +1,7 @@
-package replics.impl.net.services;
+package replics.impl.services;
 
-import replics.IReplicsService;
-import replics.IServiceManager;
+import replics.services.IReplicsService;
+import replics.services.IServiceManager;
 
 public abstract class ReplicsService implements IReplicsService {
 

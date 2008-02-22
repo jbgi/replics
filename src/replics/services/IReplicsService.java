@@ -1,4 +1,4 @@
-package replics;
+package replics.services;
 
 public interface IReplicsService {
 

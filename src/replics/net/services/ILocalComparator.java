@@ -20,8 +20,8 @@
 
 package replics.net.services;
 
-import replics.IReplicsService;
 import replics.data.IMetaRecord;
+import replics.services.IReplicsService;
 
 /**
  *

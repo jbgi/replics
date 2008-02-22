@@ -20,7 +20,7 @@
 
 package replics.net.services;
 
-import replics.IReplicsService;
+import replics.services.IReplicsService;
 
 /**
  * Manage authorization of authenticated peers to join the replication group.

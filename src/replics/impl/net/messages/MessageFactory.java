@@ -2,7 +2,7 @@ package replics.impl.net.messages;
 
 import replics.ids.IGroupID;
 import replics.ids.IPeerID;
-import replics.impl.net.services.ReplicsService;
+import replics.impl.services.ReplicsService;
 import replics.net.messages.IMessageFactory;
 import replics.net.messages.IPeerGroupAdvertisement;
 import replics.net.messages.IRecordStatus;
