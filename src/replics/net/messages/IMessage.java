@@ -11,27 +11,27 @@ public interface IMessage extends Cloneable {
 
 	public IGroupID getDestGroupID();
 	
-	public void setGroupID(IGroupID groupID);
+	public void setDestGroupID(IGroupID destGroupID);
 	
 	/**
 	 * Modify the IDs of the Peer who emitted the message
 	 * @param peerID
 	 */
-	public void setSourcePeerID(IPeerID peerID);
+	public void setSourcePeerID(IPeerID destPeerID);
 	
 	public IPeerID getSourcePeerID();
 	
 	/**
 	 * Modify the IDs of the recipients
-	 * @param peerIDs
+	 * @param peerID
 	 */
-	public void setDestPeerIDs(Collection<IPeerID> peerIDs);
+	public void setDestPeerID(IPeerID destPeerID);
 	
 	/**
 	 * Return all the IDs of the recipients
 	 * @return collection of PeerId
 	 */
-	public Collection<IPeerID> getDestPeerIDs();
+	public IPeerID getDestPeerID();
 	
 	// specifique jxta
 	//public Document getDocument();

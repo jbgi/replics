@@ -8,7 +8,7 @@ public abstract class Message implements IMessage {
 
 	protected IPeerID sourcePeerID;
 	protected IPeerID destPeerID;
-	protected IGroupID groupID;
+	protected IGroupID destGroupID;
 	protected int hops;
 	protected int ttl;
 	
@@ -17,7 +17,7 @@ public abstract class Message implements IMessage {
 		super();
 		this.sourcePeerID = sourcePeerID;
 		this.destPeerID = destPeerID;
-		this.groupID = groupID;
+		this.destGroupID = destGroupID;
 		this.hops = hops;
 		this.ttl = ttl;
 	}
@@ -26,8 +26,8 @@ public abstract class Message implements IMessage {
 		return destPeerID;
 	}
 
-	public IGroupID getGroupID() {
-		return groupID;
+	public IGroupID getDestGroupID() {
+		return destGroupID;
 	}
 
 	public int getHops() {
@@ -50,8 +50,8 @@ public abstract class Message implements IMessage {
 		this.destPeerID = destPeerID;
 	}
 
-	public void setGroupID(IGroupID groupID) {
-		this.groupID = groupID;
+	public void setDestGroupID(IGroupID destGroupID) {
+		this.destGroupID = destGroupID;
 	}
 
 	public void setHops(int hops) {
