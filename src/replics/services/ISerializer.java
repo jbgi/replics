@@ -6,7 +6,7 @@ import java.io.Reader;
 import java.io.Writer;
 
 
-public interface ISerializer {
+public interface ISerializer extends IReplicsService{
 
 	 /**
      * Serialize an object to a pretty-printed XML String.

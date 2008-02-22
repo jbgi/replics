@@ -7,42 +7,38 @@ import java.io.OutputStream;
 import java.io.Reader;
 import java.io.Writer;
 
+import com.thoughtworks.xstream.XStream;
+
 public class XStreamSerializer extends ReplicsService implements ISerializer {
 
+	private XStream xstream = new XStream();
+	
 	public Object fromXML(String xml) {
-		// TODO Auto-generated method stub
-		return null;
+		return xstream.fromXML(xml);
 	}
 
 	public Object fromXML(Reader xml) {
-		// TODO Auto-generated method stub
-		return null;
+		return xstream.fromXML(xml);
 	}
 
 	public Object fromXML(InputStream input) {
-		// TODO Auto-generated method stub
-		return null;
+		return xstream.fromXML(input);
 	}
 
 	public String toXML(Object obj) {
-		// TODO Auto-generated method stub
-		return null;
+		return xstream.toXML(obj);
 	}
 
 	public void toXML(Object obj, Writer out) {
-		// TODO Auto-generated method stub
-
+		xstream.toXML(obj, out);
 	}
 
 	public void toXML(Object obj, OutputStream out) {
-		// TODO Auto-generated method stub
-
+		xstream.toXML(obj, out);
 	}
 
 	@Override
 	protected void initialize() {
-		// TODO Auto-generated method stub
-		
 	}
 
 }
