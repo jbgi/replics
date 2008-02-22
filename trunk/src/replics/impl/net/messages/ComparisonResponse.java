@@ -1,5 +1,7 @@
 package replics.impl.net.messages;
 
+import replics.ids.IGroupID;
+import replics.ids.IPeerID;
 import replics.ids.IRecordID;
 import replics.impl.data.MetaRecord;
 import replics.impl.data.RecordID;
@@ -11,6 +13,17 @@ public class ComparisonResponse extends Message implements IComparisonResponse {
 	private IRecordID lastRecordID;
 	private IRecordID comparedRecordID;
 	private	IRecordID positiveRecordID;
+		
+	public ComparisonResponse(IPeerID sourcePeerID, IPeerID destPeerID,
+			IGroupID groupID, int hops, int ttl, IRecordID firstRecordID,
+			IRecordID lastRecordID, IRecordID comparedRecordID,
+			IRecordID positiveRecordID) {
+		super(sourcePeerID, destPeerID, groupID, hops, ttl);
+		this.firstRecordID = firstRecordID;
+		this.lastRecordID = lastRecordID;
+		this.comparedRecordID = comparedRecordID;
+		this.positiveRecordID = positiveRecordID;
+	}
 
 	public IRecordID getFirstRecordID() {
 		return firstRecordID;
