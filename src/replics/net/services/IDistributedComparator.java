@@ -35,7 +35,7 @@ public interface IDistributedComparator extends IReplicsService {
 	public void checkMetaRecord(IMetaRecord metaRecord, IComparisonListener listener);
 	
 	/**
-	 * give the list of all the services which needs comparison's results
+	 * give a register of comparisons for all the services which needs comparison's results
 	 * @param listener
 	 * 
 	 */

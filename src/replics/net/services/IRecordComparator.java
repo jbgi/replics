@@ -13,6 +13,10 @@ public interface IRecordComparator extends IReplicsService {
 	 */
 	public void checkMetaRecord(IMetaRecord metaRecord, IComparisonListener listener);
 	
+	/**
+	 * this method allows to have a registration of all the comparisons
+	 * @param listener
+	 */
 	public void registerListener(IComparisonListener listener);
 	
 }

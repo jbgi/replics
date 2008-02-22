@@ -15,6 +15,9 @@ public interface IRecordQuotaManager extends IReplicsService {
 	 */ 
 	public int getNumberOfPossibleRecord();
 	
+	/**
+	 * @return true if a new record is allowed to be stored on the disk 
+	 */
 	public boolean isNewRecordAllowed();
 	
 
