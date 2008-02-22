@@ -21,11 +21,13 @@
 	<classpathentry kind="lib" path="lib/swanspp/derbytools.jar"/>
 	<classpathentry kind="lib" path="lib/swanspp/jargs.jar"/>
 	<classpathentry kind="lib" path="lib/swanspp/jython.jar"/>
-	<classpathentry kind="lib" path="lib/swanspp/log4j.jar"/>
 	<classpathentry kind="lib" path="lib/swanspp/swanspp.jar"/>
 	<classpathentry kind="con" path="org.eclipse.pde.core.requiredPlugins"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Replics-SWT"/>
 	<classpathentry kind="lib" path="lib/xstream/xpp3_min.jar"/>
 	<classpathentry kind="lib" path="lib/xstream/xstream.jar" sourcepath="lib/xstream/xstream-src.zip"/>
+	<classpathentry kind="lib" path="lib/log/commons-logging.jar"/>
+	<classpathentry kind="lib" path="lib/log/log4j.jar"/>
+	<classpathentry kind="lib" path="lib/jgroups/jgroups-all.jar" sourcepath="lib/jgroups/jgroups-src.zip"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
