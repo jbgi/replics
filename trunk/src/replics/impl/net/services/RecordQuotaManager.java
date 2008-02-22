@@ -6,11 +6,6 @@ import replics.services.IServiceManager;
 
 public class RecordQuotaManager extends ReplicsService implements IRecordQuotaManager {
 
-	public RecordQuotaManager(IServiceManager serviceManager) {
-		super(serviceManager);
-		// TODO Auto-generated constructor stub
-	}
-
 	public int getNumberOfPossibleRecord() {
 		// TODO Auto-generated method stub
 		return 0;
@@ -23,6 +18,12 @@ public class RecordQuotaManager extends ReplicsService implements IRecordQuotaMa
 		
 		
 		return false;
+	}
+
+	@Override
+	protected void initialize() {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

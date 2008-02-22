@@ -23,4 +23,6 @@ public interface IServiceManager {
 	public IMessageMailer getMessageMailer();
 	
 	public IRecordQuotaManager getRecordQuotaManager();
+	
+	public ISerializer getSerializer();
 }

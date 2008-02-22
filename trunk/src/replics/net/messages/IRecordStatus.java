@@ -2,6 +2,7 @@ package replics.net.messages;
 
 import java.util.Map;
 
+import replics.ids.IGroupID;
 import replics.ids.IPeerID;
 import replics.ids.IRecordID;
 import replics.ids.ITagID;
@@ -14,6 +15,8 @@ import replics.ids.ITagID;
 
 public interface IRecordStatus {
 
+	public IGroupID getGroupID();
+	
 	/**
 	 * @return the last RecordId recorded by the owner of the Record
 	 * 
