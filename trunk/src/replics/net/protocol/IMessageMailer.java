@@ -9,7 +9,7 @@ public interface IMessageMailer extends IReplicsService {
 	public void register(IMessageListener messageListener, MessageType typeOfMessage);
 	
 	/**
-	 * that method is a protocol to send Messages to a peer or a group, it depends on the framwork chosen
+	 * that method implements the communication layer to send Messages to a peer or a group, it depends on the framework chosen
 	 * @param message
 	 */
 	public void send(IMessage message);
