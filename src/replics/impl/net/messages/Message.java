@@ -1,7 +1,5 @@
 package replics.impl.net.messages;
 
-import java.util.Collection;
-
 import replics.ids.IGroupID;
 import replics.ids.IPeerID;
 import replics.net.messages.IMessage;
@@ -9,13 +7,23 @@ import replics.net.messages.IMessage;
 public abstract class Message implements IMessage {
 
 	protected IPeerID sourcePeerID;
-	protected IPeerID addrPeerID;
+	protected IPeerID destPeerID;
 	protected IGroupID groupID;
 	protected int hops;
 	protected int ttl;
 	
-	public IPeerID getAddrPeerID() {
-		return addrPeerID;
+	public Message(IPeerID sourcePeerID, IPeerID destPeerID, IGroupID groupID,
+			int hops, int ttl) {
+		super();
+		this.sourcePeerID = sourcePeerID;
+		this.destPeerID = destPeerID;
+		this.groupID = groupID;
+		this.hops = hops;
+		this.ttl = ttl;
+	}
+
+	public IPeerID getDestPeerID() {
+		return destPeerID;
 	}
 
 	public IGroupID getGroupID() {
@@ -38,8 +46,8 @@ public abstract class Message implements IMessage {
 		this.sourcePeerID = sourcePeerID;
 	}
 
-	public void setAddrPeerID(IPeerID addrPeerIDs) {
-		addrPeerIDs = addrPeerIDs;
+	public void setDestPeerID(IPeerID destPeerID) {
+		this.destPeerID = destPeerID;
 	}
 
 	public void setGroupID(IGroupID groupID) {

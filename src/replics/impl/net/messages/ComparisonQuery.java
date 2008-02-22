@@ -1,7 +1,5 @@
 package replics.impl.net.messages;
 
-import java.util.Collection;
-
 import replics.ids.IGroupID;
 import replics.ids.IPeerID;
 import replics.ids.IRecordID;
@@ -14,20 +12,15 @@ public class ComparisonQuery extends Message implements IComparisonQuery {
 	private IRecordID lastRecordID;
 	private MetaRecord metaRecord;
 	
-	public ComparisonQuery(IPeerID sourcePeerID,
-			Collection<IPeerID> addrPeerIDs, IGroupID groupID,
-			IRecordID firstRecordID, IRecordID lastRecordID,
-			MetaRecord metaRecord, int hops, int ttl) {
-
-		this.sourcePeerID = sourcePeerID;
-		this.addrPeerIDs = addrPeerIDs;
-		this.groupID = groupID;
+	public ComparisonQuery(IPeerID sourcePeerID, IPeerID destPeerID,
+			IGroupID groupID, int hops, int ttl, IRecordID firstRecordID,
+			IRecordID lastRecordID, MetaRecord metaRecord) {
+		super(sourcePeerID, destPeerID, groupID, hops, ttl);
 		this.firstRecordID = firstRecordID;
 		this.lastRecordID = lastRecordID;
 		this.metaRecord = metaRecord;
-		this.hops = hops;
-		this.ttl = ttl;
 	}
+
 	public IRecordID getFirstRecordID() {
 		return firstRecordID;
 	}
