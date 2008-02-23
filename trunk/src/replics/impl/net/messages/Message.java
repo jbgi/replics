@@ -1,18 +1,20 @@
 package replics.impl.net.messages;
 
-import replics.ids.IGroupID;
-import replics.ids.IPeerID;
+import java.util.Set;
+
 import replics.net.messages.IMessage;
 
 public abstract class Message implements IMessage {
 
-	protected IPeerID sourcePeerID;
-	protected IPeerID destPeerID;
-	protected IGroupID destGroupID;
+	protected String sourcePeerID;
+	protected String destPeerID;
+	protected String destGroupID;
 	protected int hops;
 	protected int ttl;
+	private Set<String> lastView;
+	private String lastPropagatorPeer;
 	
-	public Message(IPeerID sourcePeerID, IPeerID destPeerID, IGroupID groupID,
+	public Message(String sourcePeerID, String destPeerID, String groupID,
 			int hops, int ttl) {
 		super();
 		this.sourcePeerID = sourcePeerID;
@@ -22,11 +24,11 @@ public abstract class Message implements IMessage {
 		this.ttl = ttl;
 	}
 
-	public IPeerID getDestPeerID() {
+	public String getDestPeerID() {
 		return destPeerID;
 	}
 
-	public IGroupID getDestGroupID() {
+	public String getDestGroupID() {
 		return destGroupID;
 	}
 
@@ -34,7 +36,7 @@ public abstract class Message implements IMessage {
 		return hops;
 	}
 
-	public IPeerID getSourcePeerID() {
+	public String getSourcePeerID() {
 		return sourcePeerID;
 	}
 
@@ -42,15 +44,15 @@ public abstract class Message implements IMessage {
 		return ttl;
 	}
 
-	public void setSourcePeerID(IPeerID sourcePeerID) {
+	public void setSourcePeerID(String sourcePeerID) {
 		this.sourcePeerID = sourcePeerID;
 	}
 
-	public void setDestPeerID(IPeerID destPeerID) {
+	public void setDestPeerID(String destPeerID) {
 		this.destPeerID = destPeerID;
 	}
 
-	public void setDestGroupID(IGroupID destGroupID) {
+	public void setDestGroupID(String destGroupID) {
 		this.destGroupID = destGroupID;
 	}
 
@@ -62,5 +64,11 @@ public abstract class Message implements IMessage {
 		this.ttl = ttl;
 	}
 
+	public Set<String> getLastPropagatorView(){
+		return lastView;
+	}
 	
+	public String getLastPropagaterPeerID(){
+		return lastPropagatorPeer;
+	}
 }
