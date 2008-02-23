@@ -1,6 +1,7 @@
 package replics.net.messages;
 
 import java.util.Collection;
+import java.util.Set;
 
 import replics.ids.IGroupID;
 import replics.ids.IPeerID;
@@ -9,29 +10,33 @@ import replics.ids.IPeerID;
 
 public interface IMessage extends Cloneable {
 
-	public IGroupID getDestGroupID();
+	public String getDestGroupID();
 	
-	public void setDestGroupID(IGroupID destGroupID);
+	public String getLastPropagaterPeerID();
+	
+	public Set<String> getLastPropagatorView();
+	
+	public void setDestGroupID(String destGroupID);
 	
 	/**
 	 * Modify the IDs of the Peer who emitted the message
 	 * @param peerID
 	 */
-	public void setSourcePeerID(IPeerID destPeerID);
+	public void setSourcePeerID(String destPeerID);
 	
-	public IPeerID getSourcePeerID();
+	public String getSourcePeerID();
 	
 	/**
 	 * Modify the IDs of the recipients
 	 * @param peerID
 	 */
-	public void setDestPeerID(IPeerID destPeerID);
+	public void setDestPeerID(String destPeerID);
 	
 	/**
 	 * Return all the IDs of the recipients
 	 * @return collection of PeerId
 	 */
-	public IPeerID getDestPeerID();
+	public String getDestPeerID();
 	
 	// specifique jxta
 	//public Document getDocument();
