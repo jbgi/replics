@@ -14,8 +14,8 @@ public class ComparisonResponse extends Message implements IComparisonResponse {
 	private IRecordID comparedRecordID;
 	private	IRecordID positiveRecordID;
 		
-	public ComparisonResponse(IPeerID sourcePeerID, IPeerID destPeerID,
-			IGroupID groupID, int hops, int ttl, IRecordID firstRecordID,
+	public ComparisonResponse(String sourcePeerID, String destPeerID,
+			String groupID, int hops, int ttl, IRecordID firstRecordID,
 			IRecordID lastRecordID, IRecordID comparedRecordID,
 			IRecordID positiveRecordID) {
 		super(sourcePeerID, destPeerID, groupID, hops, ttl);

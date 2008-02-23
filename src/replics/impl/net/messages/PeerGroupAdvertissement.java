@@ -9,8 +9,8 @@ public class PeerGroupAdvertissement extends Message implements IPeerGroupAdvert
 
 	private IRecordStatus recordStatus;
 
-	public PeerGroupAdvertissement(IPeerID sourcePeerID, IPeerID destPeerID,
-			IGroupID groupID, int hops, int ttl, IRecordStatus recordStatus) {
+	public PeerGroupAdvertissement(String sourcePeerID, String destPeerID,
+			String groupID, int hops, int ttl, IRecordStatus recordStatus) {
 		super(sourcePeerID, destPeerID, groupID, hops, ttl);
 		this.recordStatus = recordStatus;
 	}
