@@ -126,8 +126,10 @@ public abstract class AbstractMailer extends ReplicsService implements IMessageM
 	public void run()
 	{
 		Iterator<IMessage> it;
+		boolean finished;
 		while(true)
 		{
+			finished = true;
 			it = receptionQueue.iterator();
 			try {
 				while (it.hasNext()) {
@@ -141,12 +143,14 @@ public abstract class AbstractMailer extends ReplicsService implements IMessageM
 					callListeners(message);
 					it.remove();
 				}
-			} catch (Exception e) { }
-			synchronized (worker) {
-				try {
-					worker.wait();
-				} catch (InterruptedException e) {
-					e.printStackTrace();
+			} catch (Exception e) { finished = false; }
+			if (finished) {
+				synchronized (worker) {
+					try {
+						worker.wait();
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
 				}
 			}
 		}
