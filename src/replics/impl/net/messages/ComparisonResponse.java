@@ -6,6 +6,7 @@ import replics.ids.IRecordID;
 import replics.impl.data.MetaRecord;
 import replics.impl.data.RecordID;
 import replics.net.messages.IComparisonResponse;
+import replics.net.messages.MessageType;
 
 public class ComparisonResponse extends Message implements IComparisonResponse {
 
@@ -59,6 +60,10 @@ public class ComparisonResponse extends Message implements IComparisonResponse {
 
 	public boolean isPositiveComparison() {
 		return positiveRecordID == null;
+	}
+
+	public MessageType getMessageType() {
+		return MessageType.COMPARISON_RESPONSE;
 	}
 
 }

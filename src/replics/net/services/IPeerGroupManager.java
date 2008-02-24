@@ -32,20 +32,16 @@ public interface IPeerGroupManager extends IReplicsService, IMessageListener {
 	
 	public Set<IPeerID> getPeerIDs(IGroupID groupID, int maxHops, Date seenSince);
 	
-	public Set<IPeerID> getPossibleRoutesToPeer(IPeerID peerID);
-	
-	public InetAddress getPeerIP(IPeerID peerID);
-	
 	/**
 	 * 
 	 * @return the ID of the all groups which have been joined by a peer during his travel
 	 */
-	public Set<IGroupID> getAllGroupIDs();
+	public Set<String> getAllGroupIDs();
 	
 	/**
 	 * @return the ID of the groups currently joined by the peer
 	 */
-	public Set<IGroupID> getNeighborGroupIDs();
+	public Set<String> getNeighborGroupIDs();
 	
 	// il faudra implémenter une méthode en interne qui indique quels st les voisins joignables par le peer ex public boolean isMyNeighbor(TTL ttl)
 	
@@ -55,5 +51,9 @@ public interface IPeerGroupManager extends IReplicsService, IMessageListener {
 	 * @param peerID
 	 */
 	public IRecordStatus getRecordStatus(IGroupID groupID, Collection<IPeerID> peerIDs);
+	
+	public Set<String> getLocalPeerView();
+	
+	public void updatePeerView(String peerID);
 	
 }

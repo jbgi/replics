@@ -1,5 +1,7 @@
 package replics.net.protocol;
 
+import java.util.Set;
+
 import replics.net.messages.IMessage;
 import replics.net.messages.MessageType;
 import replics.services.IReplicsService;
@@ -14,4 +16,7 @@ public interface IMessageMailer extends IReplicsService {
 	 */
 	public void send(IMessage message);
 	
+	public void sendUnmodified(IMessage message);
+	
+	public Set<String> getSendersOf(String messageID);
 }
