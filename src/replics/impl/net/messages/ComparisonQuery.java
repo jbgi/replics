@@ -12,15 +12,6 @@ public class ComparisonQuery extends Message implements IComparisonQuery {
 	private IRecordID firstRecordID; 
 	private IRecordID lastRecordID;
 	private MetaRecord metaRecord;
-	
-	public ComparisonQuery(String sourcePeerID, String destPeerID,
-			String groupID, int hops, int ttl, IRecordID firstRecordID,
-			IRecordID lastRecordID, MetaRecord metaRecord) {
-		super(sourcePeerID, destPeerID, groupID, hops, ttl);
-		this.firstRecordID = firstRecordID;
-		this.lastRecordID = lastRecordID;
-		this.metaRecord = metaRecord;
-	}
 
 	public IRecordID getFirstRecordID() {
 		return firstRecordID;

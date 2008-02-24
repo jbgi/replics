@@ -6,27 +6,31 @@ import replics.net.messages.IMessage;
 
 public abstract class Message implements IMessage {
 
+	private final static int DEFAULT_UNICAST_TTL = 100;
+	private final static int DEFAULT_MULTICAST_TTL = 5;
+	
 	protected String sourcePeerID;
 	protected String destPeerID;
 	protected String destGroupID;
 	protected int hops;
-	protected int ttl;
+	protected int ttl = Message.DEFAULT_MULTICAST_TTL;
 	private Set<String> lastView;
 	private String lastPropagatorPeer;
 	private String id;
-	
-	public Message(String sourcePeerID, String destPeerID, String groupID,
-			int hops, int ttl) {
-		super();
-		this.sourcePeerID = sourcePeerID;
-		this.destPeerID = destPeerID;
-		this.destGroupID = destGroupID;
-		this.hops = hops;
-		this.ttl = ttl;
-	}
+	private String peerName;
 	
 	public String getID(){
 		return id;
+	}
+	
+	public String getSourcePeerName() {
+		return peerName;
+	}
+	
+	
+	public void setSourcePeerName(String peerName)
+	{
+		this.peerName = peerName;
 	}
 
 	public String getDestPeerID() {
@@ -49,11 +53,16 @@ public abstract class Message implements IMessage {
 		return ttl;
 	}
 
+	/**
+	 * Modify the IDs of the Peer who emitted the message
+	 * @param peerID
+	 */
 	public void setSourcePeerID(String sourcePeerID) {
 		this.sourcePeerID = sourcePeerID;
 	}
 
 	public void setDestPeerID(String destPeerID) {
+		this.ttl = Message.DEFAULT_UNICAST_TTL;
 		this.destPeerID = destPeerID;
 	}
 
@@ -77,11 +86,11 @@ public abstract class Message implements IMessage {
 		return lastPropagatorPeer;
 	}
 	
-	public void setLastPropagatorView(Set<String> lastPropagatorView){
-		this.lastView = lastPropagatorView;
+	public void setLastPropagatorView(Set<String> peerView){
+		this.lastView = peerView;
 	}
 	
-	public void setLastPropagaterPeerID(String lastPropagatorID){
-		this.lastPropagatorPeer = lastPropagatorID;
+	public void setLastPropagaterPeerID(String peerID){
+		this.lastPropagatorPeer = peerID;
 	}
 }

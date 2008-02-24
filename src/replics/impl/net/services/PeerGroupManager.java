@@ -38,7 +38,7 @@ public class PeerGroupManager extends ReplicsService implements
 		return null;
 	}
 
-	public IPeerID getLocalPeerID() {
+	public String getLocalPeerID() {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -81,6 +81,11 @@ public class PeerGroupManager extends ReplicsService implements
 	public void updatePeerView(String peerID) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	public String getLocalPeerName() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

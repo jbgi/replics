@@ -29,8 +29,10 @@ public class Propagator extends ReplicsService implements IPropagator {
 	public void propagate(IMessage message) {
 		if (lastPropagated.containsKey(message.getID())
 				|| message.getTTL() < 1
-				|| message.getDestPeerID().equals(services.getPeerGroupManager().getLocalPeerID().getPeerID()))
+				|| message.getDestPeerID().equals(services.getPeerGroupManager().getLocalPeerID()))
 		{
+			if (message.getTTL() < 1)
+				logger.info("Message propagation dismissed -> end of TTL: " + message.getID());
 			return;
 		}
 		
@@ -40,12 +42,10 @@ public class Propagator extends ReplicsService implements IPropagator {
 				services.getPeerGroupManager().getLocalPeerView()))
 		{
 			propagationQueue.add(message);
+			logger.fine("Message added to propagation queue: " + message.getID());
 			return;
 		}
-		
+		logger.finer("Message directly propagated: " + message.getID());
 		services.getMessageMailer().send(message);
 	}
-	
-	
-
 }

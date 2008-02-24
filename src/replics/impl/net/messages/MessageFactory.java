@@ -3,26 +3,33 @@ package replics.impl.net.messages;
 import replics.ids.IGroupID;
 import replics.ids.IPeerID;
 import replics.impl.services.ReplicsService;
+import replics.net.messages.IMessage;
 import replics.net.messages.IMessageFactory;
 import replics.net.messages.IPeerGroupAdvertisement;
 import replics.net.messages.IRecordStatus;
+import replics.net.messages.ITagMessage;
+import replics.net.messages.ITextMessage;
+import replics.net.services.IPeerGroupManager;
 
 public class MessageFactory extends ReplicsService implements IMessageFactory {
-
-	private int defaultUnicastTTL = 1000;
-	private int defaultMulticastTTL = 5;
-	private int defaultHops = 0;
 	
-	private PeerGroupAdvertissement defaultPeerGroupAdvertissement = new PeerGroupAdvertissement()
-	@Override
 	protected void initialize() {
-		// TODO Auto-generated method stub
-
 	}
 
-	public IPeerGroupAdvertisement createPeerGroupAdvertisement(
-			IPeerID destPeerID, IGroupID groupID, IRecordStatus recordStatus) {
-		return new PeerGroupAdvertissement
+	public IPeerGroupAdvertisement newPeerGroupAdvertisement() {
+		return (IPeerGroupAdvertisement) getPrepared(new PeerGroupAdvertissement()); 
+	}
+	
+	public ITextMessage newTextMessage()
+	{
+		return (ITextMessage) getPrepared(new TextMessage()); 
+	}
+	
+	private Message getPrepared(Message message)
+	{
+		message.setSourcePeerID(services.getPeerGroupManager().getLocalPeerID());
+		message.setSourcePeerName(services.getPeerGroupManager().getLocalPeerName());
+		return message;
 	}
 
 }

@@ -18,7 +18,7 @@ public interface IMessage extends Cloneable {
 	
 	public String getLastPropagaterPeerID();
 	
-	public void setLastPropagaterPeerID(String peerView);
+	public void setLastPropagaterPeerID(String peerID);
 	
 	public Set<String> getLastPropagatorView();
 	
@@ -26,13 +26,9 @@ public interface IMessage extends Cloneable {
 	
 	public void setDestGroupID(String destGroupID);
 	
-	/**
-	 * Modify the IDs of the Peer who emitted the message
-	 * @param peerID
-	 */
-	public void setSourcePeerID(String destPeerID);
-	
 	public String getSourcePeerID();
+	
+	public String getSourcePeerName();
 	
 	/**
 	 * Modify the IDs of the recipients
