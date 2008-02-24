@@ -31,9 +31,10 @@ public class MessageFactory extends ReplicsService implements IMessageFactory {
 	
 	private Message getPrepared(Message message)
 	{
+		message.setID(services.getPeerGroupManager().getLocalPeerID() + ":" + randomizer.nextLong());
 		message.setSourcePeerID(services.getPeerGroupManager().getLocalPeerID());
 		message.setSourcePeerName(services.getPeerGroupManager().getLocalPeerName());
-		message.setID(services.getPeerGroupManager().getLocalPeerID() + ":" + randomizer.nextLong());
+		message.setDestGroupID(services.getPeerGroupManager().getLocalPeerID());
 		return message;
 	}
 

@@ -39,11 +39,6 @@ public class PeerGroupManager extends ReplicsService implements
 		return null;
 	}
 
-	public IGroupID getLocalGroupID() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 	public String getLocalPeerID() {
 		return this.peerID;
 	}
@@ -99,6 +94,11 @@ public class PeerGroupManager extends ReplicsService implements
 
 	public void setGlobalContext(String globalContextName) {
 		this.globalContext = globalContextName;
+	}
+
+	public String setLocalGroupID(String groupID) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

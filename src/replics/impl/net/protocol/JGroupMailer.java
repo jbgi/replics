@@ -33,36 +33,29 @@ public class JGroupMailer extends AbstractMailer implements IMessageMailer, Rece
 	"pbcast.NAKACK(gc_lag=10;retransmit_timeout=3000):" +
 	"UNICAST:" +
 	"FRAG:" +
-	"pbcast.GMS;";
+	"pbcast.GMS(print_local_addr=false);";
 	
 	private Channel channel;
 	
 	private Map<String, Address> routes = new WeakHashMap<String, Address>(1000);
 
 	public void sendUnmodified(IMessage message) {
-		String msg = "content";
-		Message mesg = new Message();
-		//mesg.putHeader("Replics", new JGroupReplicsHeader(services.getSerializer().toXML(message)));
-		mesg.setBuffer(services.getSerializer().toXML(message).getBytes());
-		mesg.setDest(null);
+		Message msg = new Message();
 		try {
-		if (null != message.getDestGroupID()
-				&& services.getPeerGroupManager().getNeighborGroupIDs().contains(message.getDestGroupID()))
-		{
-			channel.send(null, null, msg);
-			
-		}
-		else if (null != message.getDestGroupID())
-		{
-			channel.send(routes.get(message.getDestGroupID()), null, msg);
+			msg.setBuffer(services.getSerializer().toXML(message).getBytes("UTF-8"));
+		} catch (UnsupportedEncodingException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
 		}
 		if (null != message.getDestPeerID())
 		{
-			channel.send(routes.get(message.getDestPeerID()), null, msg);
+			msg.setDest(routes.get(message.getDestPeerID()));
 		}
-		channel.send(mesg);
-		//System.out.println(mesg.getHeader("Replics"));
-		//System.out.println(mesg.getBuffer());
+		else {
+			msg.setDest(null);
+		}
+		try {
+			channel.send(msg);
 		} catch (ChannelNotConnectedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -92,8 +85,6 @@ public class JGroupMailer extends AbstractMailer implements IMessageMailer, Rece
 
 	public void receive(Message msg) {
 		IMessage message = null;
-		//System.out.println(msg.getHeader("Replics"));
-		//System.out.println(msg.getBuffer());
 		try {
 			message = (IMessage) services.getSerializer().fromXML(
 					new ByteArrayInputStream(msg.getBuffer()));

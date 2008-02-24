@@ -26,13 +26,11 @@ public interface IPeerGroupManager extends IReplicsService, IMessageListener {
 	
 	public String getLocalPeerID();
 	
-	public void setLocalPeerID(String id);
+	public void setLocalPeerID(String peerID);
 	
 	public void setLocalPeerName(String peerName);
 	
 	public String getLocalPeerName();
-	
-	public IGroupID getLocalGroupID();
 	
 	public Set<IPeerID> getMasterPeerIDs();
 	
