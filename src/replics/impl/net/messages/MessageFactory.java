@@ -1,5 +1,7 @@
 package replics.impl.net.messages;
 
+import java.util.Random;
+
 import replics.ids.IGroupID;
 import replics.ids.IPeerID;
 import replics.impl.services.ReplicsService;
@@ -12,6 +14,8 @@ import replics.net.messages.ITextMessage;
 import replics.net.services.IPeerGroupManager;
 
 public class MessageFactory extends ReplicsService implements IMessageFactory {
+	
+	private Random randomizer = new Random();
 	
 	protected void initialize() {
 	}
@@ -29,6 +33,7 @@ public class MessageFactory extends ReplicsService implements IMessageFactory {
 	{
 		message.setSourcePeerID(services.getPeerGroupManager().getLocalPeerID());
 		message.setSourcePeerName(services.getPeerGroupManager().getLocalPeerName());
+		message.setID(services.getPeerGroupManager().getLocalPeerID() + ":" + randomizer.nextLong());
 		return message;
 	}
 

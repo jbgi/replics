@@ -55,7 +55,7 @@ public abstract class AbstractMailer extends ReplicsService implements IMessageM
 	private void prepare(IMessage message){
 		message.setTTL(message.getTTL() - 1);
 		message.setHops(message.getHops() + 1);
-		message.setLastPropagaterPeerID(services.getPeerGroupManager().getLocalPeerID().getPeerID());
+		message.setLastPropagaterPeerID(services.getPeerGroupManager().getLocalPeerID());
 		message.setLastPropagatorView(services.getPeerGroupManager().getLocalPeerView());
 	}
 	
@@ -135,7 +135,7 @@ public abstract class AbstractMailer extends ReplicsService implements IMessageM
 				while (it.hasNext()) {
 					IMessage message = it.next();
 					if (message.getDestPeerID() != services
-							.getPeerGroupManager().getLocalPeerID().getPeerID()
+							.getPeerGroupManager().getLocalPeerID()
 							|| !services.getPeerGroupManager().getAllGroupIDs()
 									.contains(message.getDestGroupID())) {
 						services.getMessagePropagator().propagate(message);
@@ -143,7 +143,10 @@ public abstract class AbstractMailer extends ReplicsService implements IMessageM
 					callListeners(message);
 					it.remove();
 				}
-			} catch (Exception e) { finished = false; }
+			} catch (Exception e) { 
+				e.printStackTrace();
+				//finished = false;
+				}
 			if (finished) {
 				synchronized (worker) {
 					try {

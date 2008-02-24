@@ -23,6 +23,10 @@ public abstract class Message implements IMessage {
 		return id;
 	}
 	
+	public void setID(String messageID){
+		this.id = messageID;
+	}
+	
 	public String getSourcePeerName() {
 		return peerName;
 	}

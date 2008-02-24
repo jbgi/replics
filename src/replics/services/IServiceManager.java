@@ -3,6 +3,7 @@ package replics.services;
 import java.util.logging.Logger;
 
 import replics.data.IDataProvider;
+import replics.net.messages.IMessageFactory;
 import replics.net.protocol.IMessageMailer;
 import replics.net.services.IMembershipService;
 import replics.net.services.IPeerGroupManager;
@@ -24,6 +25,8 @@ public interface IServiceManager {
 	public IRecordComparator getRecordComparator();
 	
 	public IMessageMailer getMessageMailer();
+	
+	public IMessageFactory getMessageFactory();
 	
 	public IPropagator getMessagePropagator();
 	

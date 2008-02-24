@@ -13,6 +13,7 @@ import org.jgroups.Channel;
 import org.jgroups.ChannelClosedException;
 import org.jgroups.ChannelException;
 import org.jgroups.ChannelNotConnectedException;
+import org.jgroups.Header;
 import org.jgroups.JChannel;
 import org.jgroups.Message;
 import org.jgroups.Receiver;
@@ -27,32 +28,23 @@ import replics.net.protocol.IMessageMailer;
 
 public class JGroupMailer extends AbstractMailer implements IMessageMailer, Receiver  {
 
-	String props="UDP(mcast_addr=228.1.2.3;mcast_port=45566;ip_ttl=32):" +
-	"PING(timeout=3000;num_initial_members=6):" +
-	"FD(timeout=5000):" +
-	"VERIFY_SUSPECT(timeout=1500):" +
-	"pbcast.STABLE(desired_avg_gossip=10000):" +
+	String props="UDP(mcast_addr=228.1.2.3;mcast_port=45567;ip_ttl=32):" +
+	"PING:" +
 	"pbcast.NAKACK(gc_lag=10;retransmit_timeout=3000):" +
-	"UNICAST(timeout=5000;min_wait_time=2000):" +
+	"UNICAST:" +
 	"FRAG:" +
-	"pbcast.GMS(initial_mbrs_timeout=4000;join_timeout=5000;" +
-	"shun=false;print_local_addr=false)";
+	"pbcast.GMS;";
 	
 	private Channel channel;
 	
 	private Map<String, Address> routes = new WeakHashMap<String, Address>(1000);
-	
-	public void register(IMessageListener messageListener,
-			MessageType typeOfMessage) {
-		// TODO Auto-generated method stub
-
-	}
 
 	public void sendUnmodified(IMessage message) {
-		byte[] msg = null;
-		try { msg = services.getSerializer().toXML(message).getBytes("UTF-8");
-		} catch (UnsupportedEncodingException e) {	}
-		
+		String msg = "content";
+		Message mesg = new Message();
+		//mesg.putHeader("Replics", new JGroupReplicsHeader(services.getSerializer().toXML(message)));
+		mesg.setBuffer(services.getSerializer().toXML(message).getBytes());
+		mesg.setDest(null);
 		try {
 		if (null != message.getDestGroupID()
 				&& services.getPeerGroupManager().getNeighborGroupIDs().contains(message.getDestGroupID()))
@@ -68,6 +60,9 @@ public class JGroupMailer extends AbstractMailer implements IMessageMailer, Rece
 		{
 			channel.send(routes.get(message.getDestPeerID()), null, msg);
 		}
+		channel.send(mesg);
+		//System.out.println(mesg.getHeader("Replics"));
+		//System.out.println(mesg.getBuffer());
 		} catch (ChannelNotConnectedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -81,7 +76,7 @@ public class JGroupMailer extends AbstractMailer implements IMessageMailer, Rece
 	protected void initialize() {
 		try {
 			channel = new JChannel(props);
-			channel.connect(services.getPeerGroupManager().getLocalGroupID().getGroupID());
+			channel.connect(services.getPeerGroupManager().getGlobalContext());
 			channel.setReceiver(this);
 			super.initialize();
 		} catch (ChannelException e) {
@@ -97,6 +92,8 @@ public class JGroupMailer extends AbstractMailer implements IMessageMailer, Rece
 
 	public void receive(Message msg) {
 		IMessage message = null;
+		//System.out.println(msg.getHeader("Replics"));
+		//System.out.println(msg.getBuffer());
 		try {
 			message = (IMessage) services.getSerializer().fromXML(
 					new ByteArrayInputStream(msg.getBuffer()));

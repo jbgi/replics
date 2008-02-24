@@ -5,6 +5,7 @@ import java.util.logging.Logger;
 
 import replics.data.IDataProvider;
 import replics.impl.data.MySqlDataProvider;
+import replics.impl.net.messages.MessageFactory;
 import replics.impl.net.protocol.JGroupMailer;
 import replics.impl.net.services.MembershipService;
 import replics.impl.net.services.PeerGroupManager;
@@ -12,6 +13,7 @@ import replics.impl.net.services.Propagator;
 import replics.impl.net.services.RecordComparator;
 import replics.impl.net.services.RecordManager;
 import replics.impl.net.services.RecordQuotaManager;
+import replics.net.messages.IMessageFactory;
 import replics.net.protocol.IMessageMailer;
 import replics.net.services.IMembershipService;
 import replics.net.services.IPeerGroupManager;
@@ -34,6 +36,7 @@ public class DefaultServiceManager implements IServiceManager {
 	private ISerializer serializer;
 	private Logger logger;
 	private IPropagator propagator;
+	private IMessageFactory messageFactory;
 	
 	public IDataProvider getDataProvider() {
 		if (null == dataProvider)
@@ -123,6 +126,15 @@ public class DefaultServiceManager implements IServiceManager {
 			propagator.initialize(this);
 		}
 		return propagator;
+	}
+	
+	public IMessageFactory getMessageFactory() {
+		if (null == messageFactory)
+		{
+			messageFactory = new MessageFactory();
+			messageFactory.initialize(this);
+		}
+		return messageFactory;
 	}
 
 }

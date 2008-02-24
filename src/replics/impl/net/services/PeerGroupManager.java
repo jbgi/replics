@@ -4,6 +4,7 @@ import java.net.InetAddress;
 import java.util.Collection;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
@@ -16,6 +17,11 @@ import replics.net.services.IPeerGroupManager;
 
 public class PeerGroupManager extends ReplicsService implements
 		IPeerGroupManager {
+	
+	private String peerName;
+	private String peerID;
+	private String globalContext;
+	private Set<String> peerView = new HashSet<String>();
 	
 	@Override
 	protected void initialize() {
@@ -39,8 +45,7 @@ public class PeerGroupManager extends ReplicsService implements
 	}
 
 	public String getLocalPeerID() {
-		// TODO Auto-generated method stub
-		return null;
+		return this.peerID;
 	}
 
 	public Set<IPeerID> getMasterPeerIDs() {
@@ -58,11 +63,6 @@ public class PeerGroupManager extends ReplicsService implements
 		return null;
 	}
 
-	public InetAddress getPeerIP(IPeerID peerID) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 	public IRecordStatus getRecordStatus(IGroupID groupID,
 			Collection<IPeerID> peerIDs) {
 		// TODO Auto-generated method stub
@@ -74,18 +74,31 @@ public class PeerGroupManager extends ReplicsService implements
 	}
 
 	public Set<String> getLocalPeerView() {
-		// TODO Auto-generated method stub
-		return null;
+		return peerView;
 	}
 
 	public void updatePeerView(String peerID) {
-		// TODO Auto-generated method stub
-		
+		peerView.add(peerID);
 	}
 
 	public String getLocalPeerName() {
-		// TODO Auto-generated method stub
-		return null;
+		return peerName;
+	}
+
+	public void setLocalPeerID(String peerID) {
+		this.peerID = peerID;
+	}
+
+	public void setLocalPeerName(String peerName) {
+		this.peerName = peerName;
+	}
+
+	public String getGlobalContext() {
+		return this.globalContext;
+	}
+
+	public void setGlobalContext(String globalContextName) {
+		this.globalContext = globalContextName;
 	}
 
 }

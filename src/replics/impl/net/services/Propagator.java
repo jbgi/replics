@@ -29,7 +29,7 @@ public class Propagator extends ReplicsService implements IPropagator {
 	public void propagate(IMessage message) {
 		if (lastPropagated.containsKey(message.getID())
 				|| message.getTTL() < 1
-				|| message.getDestPeerID().equals(services.getPeerGroupManager().getLocalPeerID()))
+				|| (null != message.getDestPeerID() && message.getDestPeerID().equals(services.getPeerGroupManager().getLocalPeerID())))
 		{
 			if (message.getTTL() < 1)
 				logger.info("Message propagation dismissed -> end of TTL: " + message.getID());
