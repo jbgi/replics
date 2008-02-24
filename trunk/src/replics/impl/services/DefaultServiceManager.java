@@ -1,16 +1,21 @@
 package replics.impl.services;
 
+import java.util.logging.ConsoleHandler;
+import java.util.logging.Logger;
+
 import replics.data.IDataProvider;
 import replics.impl.data.MySqlDataProvider;
 import replics.impl.net.protocol.JGroupMailer;
 import replics.impl.net.services.MembershipService;
 import replics.impl.net.services.PeerGroupManager;
+import replics.impl.net.services.Propagator;
 import replics.impl.net.services.RecordComparator;
 import replics.impl.net.services.RecordManager;
 import replics.impl.net.services.RecordQuotaManager;
 import replics.net.protocol.IMessageMailer;
 import replics.net.services.IMembershipService;
 import replics.net.services.IPeerGroupManager;
+import replics.net.services.IPropagator;
 import replics.net.services.IRecordComparator;
 import replics.net.services.IRecordManager;
 import replics.net.services.IRecordQuotaManager;
@@ -27,6 +32,8 @@ public class DefaultServiceManager implements IServiceManager {
 	private IMessageMailer messageMailer;
 	private IRecordQuotaManager recordQuotaManager;
 	private ISerializer serializer;
+	private Logger logger;
+	private IPropagator propagator;
 	
 	public IDataProvider getDataProvider() {
 		if (null == dataProvider)
@@ -98,6 +105,24 @@ public class DefaultServiceManager implements IServiceManager {
 			serializer.initialize(this);
 		}
 		return serializer;
+	}
+	
+	public Logger getLogger() {
+		if (null == logger)
+		{
+			logger = Logger.getLogger("replics.services");
+			logger.addHandler(new ConsoleHandler());
+		}
+		return logger;
+	}
+
+	public IPropagator getMessagePropagator() {
+		if (null == propagator)
+		{
+			propagator = new Propagator();
+			propagator.initialize(this);
+		}
+		return propagator;
 	}
 
 }

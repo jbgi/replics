@@ -4,6 +4,7 @@ import replics.ids.IGroupID;
 import replics.ids.IPeerID;
 import replics.net.messages.IPeerGroupAdvertisement;
 import replics.net.messages.IRecordStatus;
+import replics.net.messages.MessageType;
 
 public class PeerGroupAdvertissement extends Message implements IPeerGroupAdvertisement {
 
@@ -21,6 +22,10 @@ public class PeerGroupAdvertissement extends Message implements IPeerGroupAdvert
 
 	public void setRecordStatus(IRecordStatus recordStatus) {
 		this.recordStatus = recordStatus;
+	}
+
+	public MessageType getMessageType() {
+		return MessageType.PEER_GROUP_ADVERTISSEMENT;
 	}
 	
 }

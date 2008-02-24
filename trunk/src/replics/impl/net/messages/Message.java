@@ -13,6 +13,7 @@ public abstract class Message implements IMessage {
 	protected int ttl;
 	private Set<String> lastView;
 	private String lastPropagatorPeer;
+	private String id;
 	
 	public Message(String sourcePeerID, String destPeerID, String groupID,
 			int hops, int ttl) {
@@ -22,6 +23,10 @@ public abstract class Message implements IMessage {
 		this.destGroupID = destGroupID;
 		this.hops = hops;
 		this.ttl = ttl;
+	}
+	
+	public String getID(){
+		return id;
 	}
 
 	public String getDestPeerID() {
@@ -70,5 +75,13 @@ public abstract class Message implements IMessage {
 	
 	public String getLastPropagaterPeerID(){
 		return lastPropagatorPeer;
+	}
+	
+	public void setLastPropagatorView(Set<String> lastPropagatorView){
+		this.lastView = lastPropagatorView;
+	}
+	
+	public void setLastPropagaterPeerID(String lastPropagatorID){
+		this.lastPropagatorPeer = lastPropagatorID;
 	}
 }

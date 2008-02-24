@@ -5,6 +5,7 @@ import replics.ids.IPeerID;
 import replics.ids.IRecordID;
 import replics.impl.data.MetaRecord;
 import replics.net.messages.IComparisonQuery;
+import replics.net.messages.MessageType;
 
 public class ComparisonQuery extends Message implements IComparisonQuery {
 
@@ -38,6 +39,10 @@ public class ComparisonQuery extends Message implements IComparisonQuery {
 	}
 	public void setMetaRecord(MetaRecord metaRecord) {
 		this.metaRecord = metaRecord;
+	}
+
+	public MessageType getMessageType() {
+		return MessageType.COMPARISON_QUERY;
 	}
 	
 }

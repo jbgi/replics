@@ -9,12 +9,20 @@ import replics.ids.IPeerID;
 //import net.jxta.document.Document;
 
 public interface IMessage extends Cloneable {
+	
+	public String getID();
+	
+	public MessageType getMessageType();
 
 	public String getDestGroupID();
 	
 	public String getLastPropagaterPeerID();
 	
+	public void setLastPropagaterPeerID(String peerView);
+	
 	public Set<String> getLastPropagatorView();
+	
+	public void setLastPropagatorView(Set<String> peerView);
 	
 	public void setDestGroupID(String destGroupID);
 	

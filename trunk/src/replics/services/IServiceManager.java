@@ -1,9 +1,12 @@
 package replics.services;
 
+import java.util.logging.Logger;
+
 import replics.data.IDataProvider;
 import replics.net.protocol.IMessageMailer;
 import replics.net.services.IMembershipService;
 import replics.net.services.IPeerGroupManager;
+import replics.net.services.IPropagator;
 import replics.net.services.IRecordComparator;
 import replics.net.services.IRecordManager;
 import replics.net.services.IRecordQuotaManager;
@@ -22,7 +25,11 @@ public interface IServiceManager {
 	
 	public IMessageMailer getMessageMailer();
 	
+	public IPropagator getMessagePropagator();
+	
 	public IRecordQuotaManager getRecordQuotaManager();
 	
 	public ISerializer getSerializer();
+	
+	public Logger getLogger();
 }
