@@ -65,7 +65,6 @@ public abstract class AbstractMailer extends ReplicsService implements IMessageM
 	}
 	
 	protected void earlyProcess(IMessage message) {
-		
 		services.getPeerGroupManager().updatePeerView(message.getLastPropagaterPeerID());
 		Set<String> senders = lastReceivedMessages.get(message.getID());
 		if (null != senders)

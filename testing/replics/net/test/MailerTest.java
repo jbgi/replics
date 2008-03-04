@@ -1,5 +1,7 @@
 package replics.net.test;
 
+import java.util.Random;
+
 import replics.impl.services.DefaultServiceManager;
 import replics.net.messages.IMessage;
 import replics.net.messages.ITextMessage;
@@ -17,8 +19,8 @@ public class MailerTest implements IMessageListener {
 		MailerTest tester = new MailerTest();
 		IServiceManager sm = new DefaultServiceManager();
 		sm.getPeerGroupManager().setGlobalContext("Replics");
-		sm.getPeerGroupManager().setLocalPeerID("123");
-		sm.getPeerGroupManager().setLocalPeerName("JIBIX");
+		sm.getPeerGroupManager().setLocalPeerID(String.valueOf(new Random().nextLong()));
+		sm.getPeerGroupManager().setLocalPeerName(args[0]);
 		sm.getMessageMailer().register(tester, MessageType.TEXT_MESSAGE);
 		ITextMessage message;
 		int i=0;
@@ -26,7 +28,7 @@ public class MailerTest implements IMessageListener {
 		{
 			i++;
 			message = sm.getMessageFactory().newTextMessage();
-			message.setContent(sm.getPeerGroupManager().getLocalPeerName() + " > Message " + i);
+			message.setContent("Message " + i);
 			sm.getMessageMailer().send(message);
 			try {
 				Thread.sleep(5000);
@@ -46,7 +48,7 @@ public class MailerTest implements IMessageListener {
 		else
 		{
 			ITextMessage textmsg = (ITextMessage) message;
-			System.out.println(textmsg.getSourcePeerName() + ": " + textmsg.getContent());
+			System.out.println(textmsg.getSourcePeerName() + " (Hops: " + message.getHops() + ") > " + textmsg.getContent());
 		}
 	}
 
