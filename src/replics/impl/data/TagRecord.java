@@ -22,6 +22,7 @@ package replics.impl.data;
 
 import java.util.Date;
 
+import replics.ids.IRecordID;
 import replics.data.ITagRecord;
 import replics.data.Tag;
 import replics.ids.ITagID;
@@ -33,8 +34,10 @@ public class TagRecord extends Record implements ITagRecord {
 	Date date;
 	String peerID;
 	Tag tag;
+	Tag tag2;
 	String hash;
-	
+	IRecordID recordID;
+	String peerID2;
 	
 	
 	public TagRecord(String comments, Date date, String peerID, Tag tag,
@@ -49,6 +52,14 @@ public class TagRecord extends Record implements ITagRecord {
 
 
 	
+	public TagRecord(IRecordID recordID, String peerID2, Tag tag2) {
+		super();
+		this.recordID=recordID;
+		this.peerID2=peerID2;
+		this.tag2=tag2;
+	}
+
+
 	public String getComments() {
 		// TODO Auto-generated method stub
 		return comments;
