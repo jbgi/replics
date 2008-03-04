@@ -22,6 +22,7 @@ package replics.data;
 
 import java.io.Serializable;
 import replics.ids.IRecordID;
+import replics.net.messages.MessageType;
 
 /**
  * Generic interface for all records.
@@ -47,4 +48,6 @@ public interface IRecord {
 	 */
 	public IRecordID getRecordID();
 
+	
+	public RecordType getRecordType();
 }
