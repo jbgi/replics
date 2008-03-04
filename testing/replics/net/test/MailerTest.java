@@ -21,7 +21,7 @@ public class MailerTest implements IMessageListener {
 		sm.getPeerGroupManager().setLocalPeerName("JIBIX");
 		sm.getMessageMailer().register(tester, MessageType.TEXT_MESSAGE);
 		ITextMessage message = sm.getMessageFactory().newTextMessage();
-		message.setContent("test message <é> : à demain, être où là bas, ça 50€ pas chère.");
+		message.setContent("test message");
 		
 		//System.out.println(sm.getSerializer().toXML(message));
 		sm.getMessageMailer().send(message);

@@ -25,7 +25,7 @@ public abstract class AbstractMailer extends ReplicsService implements IMessageM
 	
 	private List<IMessage> receptionQueue = new Vector<IMessage>();
 	
-	private Map<String, Set<String>> lastReceivedMessages = new WeakHashMap<String, Set<String> >(500);
+	protected Map<String, Set<String>> lastReceivedMessages = new WeakHashMap<String, Set<String> >(500);
 	
 	private Map<MessageType, Set<IMessageListener> > listeners = new EnumMap<MessageType, Set<IMessageListener>>(MessageType.class);
 	
