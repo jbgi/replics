@@ -68,7 +68,7 @@ public class UserPassword {
 			public void widgetSelected(SelectionEvent e){
 				if(Passwordtext.getText().equals(passwordString)){
 				sShell.setVisible(false);
-				UserInterface user = new UserInterface(); 
+				Session session = new Session(); 
 				}else{
 					Passwordtext.setText("wrong password");
 				}
