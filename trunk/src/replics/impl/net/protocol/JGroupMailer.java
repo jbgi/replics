@@ -93,12 +93,15 @@ public class JGroupMailer extends AbstractMailer implements Receiver  {
 			 logger.warning("Unreconized message received: dismissed");
 			 return;
 		}
+		if (!message.getSourcePeerID().equals(services.getPeerGroupManager().getLocalPeerID()))
+		{
 		if (!lastReceivedMessages.containsKey(message.getID()))
 		{
 			routes.put(message.getSourcePeerID(), msg.getSrc());
 			routes.put(message.getLastPropagaterPeerID(), msg.getSrc());
 		}
 		earlyProcess(message);
+		}
 	}
 
 	public void setState(byte[] state) {
