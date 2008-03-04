@@ -20,6 +20,7 @@
 
 package replics.data;
 
+import java.sql.SQLException;
 import java.util.List;
 
 import org.w3c.dom.Document;
@@ -47,8 +48,9 @@ public interface IDataProvider extends IReplicsService {
 	 * 
 	 * @param recordIDs
 	 *            recordIDs to be deleted.
+	 * @throws SQLException 
 	 */
-	public void deleteRecords(List<IRecordID> recordIDs);
+	public void deleteRecords(List<IRecordID> recordIDs) throws SQLException;
 
 	/**
 	 * Search method to retrieve matching records.
