@@ -26,7 +26,7 @@ import replics.net.messages.MessageType;
 import replics.net.protocol.IMessageListener;
 import replics.net.protocol.IMessageMailer;
 
-public class JGroupMailer extends AbstractMailer implements IMessageMailer, Receiver  {
+public class JGroupMailer extends AbstractMailer implements Receiver  {
 
 	String props="UDP(mcast_addr=228.1.2.3;mcast_port=45567;ip_ttl=32):" +
 	"PING:" +
@@ -93,8 +93,11 @@ public class JGroupMailer extends AbstractMailer implements IMessageMailer, Rece
 			 logger.warning("Unreconized message received: dismissed");
 			 return;
 		}
-		routes.put(message.getSourcePeerID(), msg.getSrc());
-		routes.put(message.getLastPropagaterPeerID(), msg.getSrc());
+		if (!lastReceivedMessages.containsKey(message.getID()))
+		{
+			routes.put(message.getSourcePeerID(), msg.getSrc());
+			routes.put(message.getLastPropagaterPeerID(), msg.getSrc());
+		}
 		earlyProcess(message);
 	}
 
