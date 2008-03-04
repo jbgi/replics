@@ -20,11 +20,21 @@ public class MailerTest implements IMessageListener {
 		sm.getPeerGroupManager().setLocalPeerID("123");
 		sm.getPeerGroupManager().setLocalPeerName("JIBIX");
 		sm.getMessageMailer().register(tester, MessageType.TEXT_MESSAGE);
-		ITextMessage message = sm.getMessageFactory().newTextMessage();
-		message.setContent("test message");
-		
-		//System.out.println(sm.getSerializer().toXML(message));
-		sm.getMessageMailer().send(message);
+		ITextMessage message;
+		int i=0;
+		while(true)
+		{
+			i++;
+			message = sm.getMessageFactory().newTextMessage();
+			message.setContent(sm.getPeerGroupManager().getLocalPeerName() + " > Message " + i);
+			sm.getMessageMailer().send(message);
+			try {
+				Thread.sleep(5000);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
 	}
 
 	public void handleMessage(IMessage message) {
