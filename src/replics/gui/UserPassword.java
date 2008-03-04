@@ -38,7 +38,7 @@ public class UserPassword {
 		sShell.setLocation(Welcome.xPos,Welcome.yPos);
 		//label
 		label = new Label(sShell, SWT.NONE);
-		label.setBounds(new org.eclipse.swt.graphics.Rectangle(205,180,150,20));
+		label.setBounds(new org.eclipse.swt.graphics.Rectangle(205,180,170,20));
 		label.setText("     ENTER YOUR PASSWORD");
 		//text
 		Passwordtext = new Text(sShell, SWT.BORDER);
