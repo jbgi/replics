@@ -13,7 +13,7 @@ import replics.ids.ITagID;
  */
 
 
-public interface IRecordStatus {
+public interface IRecordStatus extends IMessage {
 
 	public IGroupID getGroupID();
 	

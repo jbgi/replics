@@ -9,14 +9,14 @@ import replics.net.messages.MessageType;
 
 public class RecordMessage implements IRecordMessage {
 
+	public IRecord record;
+	
 	public IRecord getRecord() {
-		// TODO Auto-generated method stub
-		return null;
+		return this.record;
 	}
 
 	public IRecordID getRecordID() {
-		// TODO Auto-generated method stub
-		return null;
+		return this.record.getRecordID();
 	}
 
 	public boolean isFullRecord() {
