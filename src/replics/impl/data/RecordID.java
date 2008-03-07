@@ -24,19 +24,30 @@ import replics.ids.IRecordID;
 
 public class RecordID implements IRecordID {
 
+	int RecordID;
+	String GroupID;
+	
+	public RecordID(int RecordID, String GroupID){
+		super();
+		this.RecordID=RecordID;
+		this.GroupID=GroupID;
+	}
+	
 	public boolean equals() {
 		// TODO Auto-generated method stub
 		return false;
 	}
 	
+	@Override
 	public String getGroupID() {
 		// TODO Auto-generated method stub
-		return null;
+		return GroupID;
 	}
 
+	@Override
 	public int getRecordID() {
 		// TODO Auto-generated method stub
-		return 0;
+		return RecordID;
 	}
 
 }
