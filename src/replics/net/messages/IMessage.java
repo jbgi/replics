@@ -13,8 +13,6 @@ public interface IMessage extends Cloneable {
 	public String getID();
 	
 	public MessageType getMessageType();
-
-	public String getDestGroupID();
 	
 	public String getLastPropagaterPeerID();
 	
@@ -69,7 +67,13 @@ public interface IMessage extends Cloneable {
 	 */
 	public void setTTL(int ttl);
 	
+	//public void setDescriptor(IDescriptor descriptor);
 	
+	//public IDescriptor getDescriptor(IDescriptor descriptor);
+	
+	//public void setContent(byte[] content);
+	
+	//public byte[] getContent();
 	
 	// specifique jxta
 	//public void setDocument(); 

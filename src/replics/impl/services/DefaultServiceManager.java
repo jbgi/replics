@@ -1,9 +1,14 @@
 package replics.impl.services;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.logging.ConsoleHandler;
 import java.util.logging.Logger;
 
+import org.clapper.util.config.Configuration;
+
 import replics.data.IDataProvider;
+import replics.impl.data.DerbyDataProvider;
 import replics.impl.data.MySqlDataProvider;
 import replics.impl.net.messages.MessageFactory;
 import replics.impl.net.protocol.JGroupMailer;
@@ -37,11 +42,13 @@ public class DefaultServiceManager implements IServiceManager {
 	private Logger logger;
 	private IPropagator propagator;
 	private IMessageFactory messageFactory;
+	private Configuration config;
+	private String configFilePath;
 	
 	public IDataProvider getDataProvider() {
 		if (null == dataProvider)
 		{
-			dataProvider = new MySqlDataProvider();
+			dataProvider = new DerbyDataProvider();
 			dataProvider.initialize(this);
 		}
 		return dataProvider;
@@ -135,6 +142,31 @@ public class DefaultServiceManager implements IServiceManager {
 			messageFactory.initialize(this);
 		}
 		return messageFactory;
+	}
+
+	public Configuration getConfig() {
+		if (null == config)
+		{
+			File configFile;
+			if (null == configFilePath)
+			{
+				configFile = new File(System.getProperty("user.home") + File.separator + ".replics");
+			}
+			else {
+				configFile = new File(configFilePath);
+			}
+			try {
+			if (!configFile.exists())
+			{
+				configFile.mkdirs();
+				configFile = new File(configFile, "config");
+				configFile.createNewFile();
+			}
+			config = new Configuration();
+			config.load(configFile);
+			} catch (Exception e) { e.printStackTrace(); }
+		}
+		return config;
 	}
 
 }

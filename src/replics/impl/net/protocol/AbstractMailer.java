@@ -134,9 +134,7 @@ public abstract class AbstractMailer extends ReplicsService implements IMessageM
 				while (it.hasNext()) {
 					IMessage message = it.next();
 					if (message.getDestPeerID() != services
-							.getPeerGroupManager().getLocalPeerID()
-							|| !services.getPeerGroupManager().getAllGroupIDs()
-									.contains(message.getDestGroupID())) {
+							.getPeerGroupManager().getLocalPeerID()) {
 						services.getMessagePropagator().propagate(message);
 					}
 					callListeners(message);
