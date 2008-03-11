@@ -2,6 +2,8 @@ package replics.services;
 
 import java.util.logging.Logger;
 
+import org.clapper.util.config.Configuration;
+
 import replics.data.IDataProvider;
 import replics.net.messages.IMessageFactory;
 import replics.net.protocol.IMessageMailer;
@@ -35,4 +37,6 @@ public interface IServiceManager {
 	public ISerializer getSerializer();
 	
 	public Logger getLogger();
+	
+	public Configuration getConfig();
 }
