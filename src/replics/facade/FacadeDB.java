@@ -10,7 +10,7 @@ import replics.kernel.JDBC;
 public class FacadeDB {
 	
 	Session session;	
-	JDBC jdbc = new JDBC();
+	static JDBC jdbc = new JDBC();
 	
 	/** A1
 	 * This method receives the administrator information and validates it.
@@ -20,7 +20,7 @@ public class FacadeDB {
 	 * @return LOGIN_NOT_VALID the login is not valid
 	 * @return PASS_NOT_VALID the password is not valid
 	 */
-	public ErrorTag adminLogin(String login, String password) {
+	public static ErrorTag adminLogin(String login, String password) {
 		ErrorTag et = ErrorTag.SUCCESS;
 		et = ErrorTag.LOGIN_NOT_VALID;
 		et = ErrorTag.PASSWORD_NOT_VALID;
@@ -41,7 +41,7 @@ public class FacadeDB {
 	 * @return LOGIN_NOT_AVAILABLE the login is already taken
 	 * @return INVALID_DATA some of the data is not valid
 	 */
-	public ErrorTag addAdmin(String login, String password, String name, File photo,
+	public static ErrorTag addAdmin(String login, String password, String name, File photo,
 						String lastname,Date birthday, String birthplace, String address) {
 		ErrorTag et = ErrorTag.SUCCESS;
 		et = ErrorTag.LOGIN_NOT_AVAILABLE;
@@ -58,7 +58,7 @@ public class FacadeDB {
 	 * @return LOGIN_NOT_VALID the login is not valid 
 	 * @return PASSWORD_NOT_VALID the password is not valid
 	 */
-	public ErrorTag adminChangePassword(String login, String password, String newPass) {
+	public static ErrorTag adminChangePassword(String login, String password, String newPass) {
 		ErrorTag et = ErrorTag.SUCCESS;
 		et = ErrorTag.LOGIN_NOT_VALID;
 		et = ErrorTag.PASSWORD_NOT_VALID;
@@ -80,7 +80,7 @@ public class FacadeDB {
 	 * @return LOGIN_NOT_AVAILABLE the login is already taken
 	 * @return INVALID_DATA some of the data is not valid
 	 */
-	public ErrorTag addMember(IdTag it, String login, FingerPrint fp, String name, File photo,
+	public static ErrorTag addMember(IdTag it, String login, FingerPrint fp, String name, File photo,
 						String lastname,Date birthday, String birthplace, String address) {
 		ErrorTag et = ErrorTag.SUCCESS;
 		et = ErrorTag.LOGIN_NOT_AVAILABLE;
@@ -96,7 +96,7 @@ public class FacadeDB {
 	 * @return SUCCESS the member was successfully removed
 	 * @return LOGIN_NOT_VALID the login is not valid
 	 */
-	public ErrorTag removeMember(IdTag it, String login, FingerPrint fp) {
+	public static ErrorTag removeMember(IdTag it, String login, FingerPrint fp) {
 		ErrorTag et = ErrorTag.SUCCESS;
 		et = ErrorTag.LOGIN_NOT_VALID;
 		return et;
@@ -108,7 +108,7 @@ public class FacadeDB {
 	 * @return SUCCESS the session was successfully opened
 	 * @return SESSION_NOT_VALID the session does not exist
 	 */	
-	public ErrorTag openSession(Integer sessionID){
+	public static ErrorTag openSession(Integer sessionID){
 		ErrorTag et = ErrorTag.SUCCESS;
 		et = ErrorTag.SESSION_NOT_VALID;
 		return et;
@@ -125,7 +125,7 @@ public class FacadeDB {
 	 * @return FINGERPRINT_NOT_VALID the password is incorrect
 	 * @return MEMBER_NOT_VALID the member is not valid, he does not belong to this session
 	 */
-	public ErrorTag memberLoginCreatedSession(IdTag it, String login, String password, FingerPrint fp) {
+	public static ErrorTag memberLoginCreatedSession(IdTag it, String login, String password, FingerPrint fp) {
 		ErrorTag et = ErrorTag.SUCCESS;
 		et = ErrorTag.LOGIN_NOT_VALID;
 		et = ErrorTag.PASSWORD_NOT_VALID;
@@ -144,7 +144,7 @@ public class FacadeDB {
 	 * @return INVALID_DATA the session was not created
 	 */
 	
-	public ErrorTag createSession(Integer reg, Integer dist, Integer cent){
+	public static ErrorTag createSession(Integer reg, Integer dist, Integer cent){
 		
 		ErrorTag et = ErrorTag.SUCCESS;
 		et = ErrorTag.INVALID_DATA;
@@ -162,7 +162,7 @@ public class FacadeDB {
 	 * @return FINGERPRINT_NOT_VALID the password is incorrect
 	 * @return SPOT_ASSINGED this spot already belongs to other member 
 	 */
-	public ErrorTag memberLoginNewSession(IdTag it, String login, String password, FingerPrint fp) {
+	public static ErrorTag memberLoginNewSession(IdTag it, String login, String password, FingerPrint fp) {
 		ErrorTag et = ErrorTag.SUCCESS;
 		et = ErrorTag.LOGIN_NOT_VALID;
 		et = ErrorTag.PASSWORD_NOT_VALID;
@@ -185,7 +185,7 @@ public class FacadeDB {
 	 * @return USER_ALREADY_REGISTERED this person is already registered
 	 * @return INVALID_DATA some of the data is not valid
 	 */
-	public ErrorTag addPerson(String name, String lastname, File photo, FingerPrint fp, 
+	public static ErrorTag addPerson(String name, String lastname, File photo, FingerPrint fp, 
 						Date birthday, String birthplace, String address , float height) {
 		ErrorTag et = ErrorTag.SUCCESS;
 		et = ErrorTag.USER_ALREADY_REGISTERED;
@@ -208,13 +208,13 @@ public class FacadeDB {
 //	}
 	
 	
-	public boolean confirmNewIdentity(int i){
+	public static boolean confirmNewIdentity(int i){
 		
 		jdbc.confirmIdentity(i);
 		return false;
 	}
 
-	public void saveData(String idGroup, Integer IDU, String hash, File xml, File photo, File fingerPrint, float height) throws FileNotFoundException, SQLException {
+	public static void saveData(String idGroup, Integer IDU, String hash, File xml, File photo, File fingerPrint, float height) throws FileNotFoundException, SQLException {
 		
 		jdbc.saveRecord(idGroup, IDU, hash, xml, photo, fingerPrint, height);
 	}
