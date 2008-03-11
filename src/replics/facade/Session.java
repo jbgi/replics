@@ -10,9 +10,19 @@ public class Session {
 	private String loginIdent;
 	private String loginContr;
 	
+	private String loginCivil1;
+	private String loginCivil2;
 	
+	static private Session session = null;
 	
-	public Session(Integer region, Integer district, Integer center) {
+	static public Session instance(Integer region, Integer district, Integer center){
+		
+		if(session==null)session=new Session(region, district, center);
+		
+		return session;
+	}	
+	
+	private Session(Integer region, Integer district, Integer center) {
 		super();
 		Region = region;
 		District = district;
@@ -54,6 +64,22 @@ public class Session {
 	}
 	public void setLoginContr(String loginContr) {
 		this.loginContr = loginContr;
+	}
+
+	public String getLoginCivil1() {
+		return loginCivil1;
+	}
+
+	public void setLoginCivil1(String loginCivil1) {
+		this.loginCivil1 = loginCivil1;
+	}
+
+	public String getLoginCivil2() {
+		return loginCivil2;
+	}
+
+	public void setLoginCivil2(String loginCivil2) {
+		this.loginCivil2 = loginCivil2;
 	}
 	
 	

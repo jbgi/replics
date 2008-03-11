@@ -27,104 +27,36 @@ package replics.facade;
  */
 public enum ErrorTag {
 
-	/**
-	 * 
-	 */
-	ADMIN_VALID,
+	/**	ok */
+	SUCCESS,
+	
+	/**	  ok */
+	LOGIN_NOT_VALID,
 
-	/**
-	 * 
-	 */
-	ADMIN_NOT_VALID,
-
-	/**
-	 * 
-	 */
-	ADMIN_NOT_EXISTS,
-	
-	/**
-	 * 
-	 */
-	ADMIN_REGISTERED,
-
-	/**
-	 * 
-	 */
-	ADMIN_ALREADY_REGISTERED,
-	
-	/**
-	 * 
-	 */
-	LOGIN_NOT_AVAILABLE,
-	
-	/**
-	 * 
-	 */
-	PASSWORD_CHANGED,
-	
-	/**
-	 * 
-	 */
+	/**	 ok */
 	PASSWORD_NOT_VALID,
 	
-	/**
-	 * 
-	 */
-	MEMBER_VALID,
-
-	/**
-	 * 
-	 */
-	MEMBER_NOT_VALID,
-
-	/**
-	 * 
-	 */
-	MEMBER_NOT_EXISTS,
+	/**	ok */
+	LOGIN_NOT_AVAILABLE,
 	
-	/**
-	 * 
-	 */
-	MEMBER_REGISTERED,
-
-	/**
-	 * 
-	 */
-	MEMBER_ALREADY_REGISTERED,
-	
-	/**
-	 * 
-	 */
-	MEMBER_REMOVED,
-	
-	/**
-	 * 
-	 */
-	MEMBER_NOT_REMOVED,
-	
-	/**
-	 *
-	 */
-	USER_REGISTERED,
-	
-	/**
-	 *
-	 */
-	USER_ALREADY_REGISTERED,
-
-	/**
-	 *
-	 */
+	/**	ok */
 	INVALID_DATA,
 	
-	/**
-	 *
-	 */
-	SESSION_CREATED,
+	/**	 ok */
+	SESSION_NOT_VALID,
 	
-	/**
-	 *
-	 */
-	SESSION_NOT_CREATED;
+	/**	 ok */
+	FINGERPRINT_NOT_VALID,
+
+	/**	 ok */
+	MEMBER_NOT_VALID,
+	
+	/**	 ok */
+	SPOT_ASSIGNED,
+	
+	/**	 ok */
+	USER_ALREADY_REGISTERED,
+
+
 }
 
