@@ -20,4 +20,6 @@ public abstract class ReplicsService implements IReplicsService {
 	
 	protected abstract void  initialize();
 	
+	public void shutdown() {}
+	
 }
