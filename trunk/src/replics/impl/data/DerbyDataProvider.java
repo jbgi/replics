@@ -4,10 +4,10 @@ import java.io.File;
 import java.sql.*;
 
 import java.util.Collection;
+import java.util.Hashtable;
 import java.util.Map;
 import java.util.regex.Pattern;
-
-import org.clapper.util.io.FileUtil;
+import org.apache.derby.iapi.services.io.FileUtil;
 
 import replics.data.IDataProvider;
 import replics.impl.services.ReplicsService;
@@ -26,9 +26,6 @@ public class DerbyDataProvider extends ReplicsService implements IDataProvider {
 			+ ";create=true";
 
 	private static String[] createStrings = {
-		"DROP TABLE FILES_TAGS", 
-		"DROP TABLE TAGS",
-		"DROP TABLE FILES", 
 		 
 		"CREATE TABLE TAGS (" 
 		+ "	ID INTEGER NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1)," 
@@ -62,14 +59,15 @@ public class DerbyDataProvider extends ReplicsService implements IDataProvider {
 		+ "	no sql"
 		+ "	external name 'replics.impl.data.matchRegexp'" };
 	
-	
-
 	private Connection conn = null;
+	
+	private File filesDir;
+	
 	private Statement s;
 	private PreparedStatement psInsert;
 	
 	private PreparedStatement deleteFile;
-	private PreparedStatement deleteRecords;
+	private PreparedStatement deleteRecord;
 	private PreparedStatement deleteDesc;
 	private PreparedStatement getDesc;
 	private PreparedStatement getfilePath;
@@ -84,31 +82,91 @@ public class DerbyDataProvider extends ReplicsService implements IDataProvider {
 	         retval=1;
 	      return retval;
 	}
-	
-	private void deleteFile(String pathToFile){
-		org.apache.derby.iapi.services.io.FileUtil.removeDirectory("");
-	}
 
 	public void deleteFiles(Collection<String> recordIDs) {
-		
+		String filePath;
+		for (String recordID : recordIDs) {
+			filePath = getFilePath(recordID);
+			if (null != filePath)
+			{
+				synchronized (deleteFile) {
+					try {
+						deleteFile.setString(1, recordID);
+						deleteFile.executeUpdate();
+					} catch (SQLException e) { e.printStackTrace();	}
+				}
+				FileUtil.removeDirectory(filePath);
+			}
+		}
 	}
 	
 	public void deleteDesc(Collection<String> recordIDs) {
-		
+		for (String recordID : recordIDs) {
+			synchronized (deleteDesc) {
+				try {
+					deleteDesc.setString(1, recordID);
+					deleteDesc.executeUpdate();
+				} catch (SQLException e) { e.printStackTrace();	}
+			}
+		}
 	}
 
 	public void deleteRecords(Collection<String> recordIDs) {
-		// TODO Auto-generated method stub
+		String filePath;
+		for (String recordID : recordIDs) {
+			filePath = getFilePath(recordID);
+			if (null != filePath)
+			{
+				synchronized (deleteRecord) {
+					try {
+						deleteRecord.setString(1, recordID);
+						deleteRecord.executeUpdate();
+					} catch (SQLException e) { e.printStackTrace();	}
+				}
+				FileUtil.removeDirectory(filePath);
+			}
+		}
 	}
 
+	@SuppressWarnings("unchecked")
 	public Map<String, String> getDesc(String recordID) {
-		// TODO Auto-generated method stub
+		try {
+			ResultSet r;
+			synchronized (getDesc) {
+				getDesc.setString(1, recordID);
+				r = getDesc.executeQuery();
+			}
+			if (r.first()) {
+				return (Map<String, String>) services.getSerializer().fromXML(r.getString(1));
+			}
+		} catch (SQLException e) {e.printStackTrace();}
 		return null;
 	}
 
-	public Map<String, Map<String, String>> getDescMap(
-			Collection<String> recordIDs) {
-		// TODO Auto-generated method stub
+	public Map<String, Map<String, String>> getDescMap(Collection<String> recordIDs) {
+		Map<String, Map<String, String>> descMap = new Hashtable<String, Map<String,String>>();
+		Map<String, String> desc;
+		for (String recordID : recordIDs) {
+			desc = getDesc(recordID);
+			if (null != desc)
+			{
+				descMap.put(recordID, desc);
+			}
+		}
+		return descMap;
+	}
+	
+	private String getFilePath(String recordID)
+	{
+		try {
+			ResultSet r;
+			synchronized (getfilePath) {
+				getfilePath.setString(1, recordID);
+				r = getfilePath.executeQuery();
+			} 
+			if (r.first())
+			return r.getString(1);
+		} catch (SQLException e) {e.printStackTrace();}
 		return null;
 	}
 
@@ -152,35 +210,59 @@ public class DerbyDataProvider extends ReplicsService implements IDataProvider {
 
 	}
 
-	@Override
 	protected void initialize() {
 		try {
 			Class.forName(driver);
-			System.out.println(driver + " loaded. ");
 		} catch (java.lang.ClassNotFoundException e) {
-			System.err.print("ClassNotFoundException: ");
-			System.err.println(e.getMessage());
-		}
-
-		try {
-			conn = DriverManager.getConnection(connectionURL);
-			System.out.println("Connected to database " + dbName);
-			s = conn.createStatement();
-			System.out.println(" . . . . creating tables");
-			for (int i=0; i< createStrings.length; i++)
-			{
-				try {
-					s.execute (createStrings[i]);
-				}
-				catch (SQLSyntaxErrorException e) {e.printStackTrace();};
-			}
-		}
-		catch (Throwable e) {
 			e.printStackTrace();
 		}
+		String baseDirectory = "";
+		try {
+			baseDirectory = services.getConfig().getConfigurationValue("DataBase", "DB_directory");
+		} catch (Exception e1) {
+				try {
+					baseDirectory = System.getProperty("user.home") + File.separator + ".replics" 
+							+ File.separator + "data" + File.separator + "db";
+					services.getConfig().addSection("DataBase");
+					services.getConfig().setVariable("DataBase", "DB_directory", baseDirectory, false);
+				} catch (Exception e2) {e2.printStackTrace(); }
+			}
 		
-		
-
+			try {
+				conn = DriverManager.getConnection("jdbc:derby:directory:" + baseDirectory);
+				logger.fine("Connected to derby database");
+			} catch (SQLException e1) {
+				try {
+					conn = DriverManager.getConnection("jdbc:derby:directory:" + baseDirectory + ";create=true");
+					logger.info("Creation of replics (derby) database");
+					s = conn.createStatement();
+					for (int i=0; i< createStrings.length; i++)
+					{
+						try {
+							s.execute (createStrings[i]);
+						}
+						catch (SQLSyntaxErrorException e) {e.printStackTrace();};
+					}
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+			String filesDirPath = "";
+			try {
+				filesDirPath = services.getConfig().getConfigurationValue("DataBase", "File_directory");
+			} catch (Exception e) {
+				filesDirPath = System.getProperty("user.home") + File.separator + ".replics" 
+				+ File.separator + "data" + File.separator + "files";
+				try {
+					services.getConfig().setVariable("DataBase", "files_directory", filesDirPath, false);
+				} catch (Exception e1) { e1.printStackTrace(); } 
+			}
+			filesDir = new File(filesDirPath);
+			if (!filesDir.exists())
+			{
+				filesDir.mkdirs();
+			}
 	}
 
 }

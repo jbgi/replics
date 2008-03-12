@@ -18,7 +18,7 @@ public abstract class ReplicsService implements IReplicsService {
 		initialize();
 	}
 	
-	protected abstract void  initialize();
+	protected void  initialize() {};
 	
 	public void shutdown() {}
 	
