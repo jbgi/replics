@@ -1,11 +1,14 @@
 package replics.impl.services;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.logging.ConsoleHandler;
 import java.util.logging.Logger;
 
 import org.clapper.util.config.Configuration;
+import org.clapper.util.config.ConfigurationException;
 
 import replics.data.IDataProvider;
 import replics.impl.data.DerbyDataProvider;
@@ -26,6 +29,7 @@ import replics.net.services.IPropagator;
 import replics.net.services.IRecordComparator;
 import replics.net.services.IRecordManager;
 import replics.net.services.IRecordQuotaManager;
+import replics.services.IReplicsService;
 import replics.services.ISerializer;
 import replics.services.IServiceManager;
 
@@ -44,6 +48,17 @@ public class DefaultServiceManager implements IServiceManager {
 	private IMessageFactory messageFactory;
 	private Configuration config;
 	private String configFilePath;
+	
+	private IReplicsService[] services = {dataProvider, membershipService, peerGroupManager, 
+			recordComparator, recordManager, messageMailer, recordQuotaManager, serializer,
+			propagator, messageFactory};
+	
+	public DefaultServiceManager() {}
+	
+	public DefaultServiceManager(String configFilePath)
+	{
+		this.configFilePath = configFilePath;
+	}
 	
 	public IDataProvider getDataProvider() {
 		if (null == dataProvider)
@@ -148,25 +163,55 @@ public class DefaultServiceManager implements IServiceManager {
 		if (null == config)
 		{
 			File configFile;
-			if (null == configFilePath)
-			{
-				configFile = new File(System.getProperty("user.home") + File.separator + ".replics");
+			if (null != configFilePath) {
+				configFile = new File(configFilePath);
+				if (!configFile.exists())
+				{
+					configFile = new File(configFilePath + File.separator + "config");
+				}
 			}
 			else {
-				configFile = new File(configFilePath);
+				configFile = new File(System.getProperty("user.home") + File.separator + ".replics" + File.separator + "config");
 			}
-			try {
+			
 			if (!configFile.exists())
 			{
-				configFile.mkdirs();
-				configFile = new File(configFile, "config");
-				configFile.createNewFile();
+				configFile.getParentFile().mkdirs();
+				try {
+					configFile.createNewFile();
+				} catch (IOException e) { e.printStackTrace(); }
 			}
+			
 			config = new Configuration();
-			config.load(configFile);
-			} catch (Exception e) { e.printStackTrace(); }
+			try {
+				config.load(configFile);
+			} catch (Exception e) {	e.printStackTrace(); }
 		}
 		return config;
+	}
+
+	public void shutdown() {
+		for (int i = 0; i < services.length; i++)
+		{
+			if (null != services[i])
+			{
+				services[i].shutdown();
+			}
+		}
+		if (null != config)
+		{
+			PrintWriter pw;
+			try {
+				pw = new PrintWriter(config.getConfigurationFileURL().getPath());
+				config.write(pw);
+				pw.flush();
+				pw.close();
+			} catch (Exception e) {	e.printStackTrace(); }
+		}
+		if (null != logger)
+		{
+			logger.info("Replics is shutting down now!");
+		}
 	}
 
 }

@@ -39,4 +39,6 @@ public interface IServiceManager {
 	public Logger getLogger();
 	
 	public Configuration getConfig();
+	
+	public void shutdown();
 }
