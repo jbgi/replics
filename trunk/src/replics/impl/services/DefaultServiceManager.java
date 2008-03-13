@@ -136,7 +136,6 @@ public class DefaultServiceManager implements IServiceManager {
 		if (null == logger)
 		{
 			logger = Logger.getLogger("replics.services");
-			logger.addHandler(new ConsoleHandler());
 		}
 		return logger;
 	}

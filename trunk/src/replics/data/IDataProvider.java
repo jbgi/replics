@@ -20,6 +20,7 @@
 
 package replics.data;
 
+import java.io.File;
 import java.io.Writer;
 import java.sql.SQLException;
 import java.util.Collection;
@@ -38,35 +39,30 @@ import replics.services.IReplicsService;
  * Interface used to retrieve and store information from/to the database.
  * 
  * Only one instance of this interface for the whole application, thus the
- * implementation must be thread-safe. The use of a connection pool should
- * reduce the DB server stressing.
+ * implementation must be thread-safe.
  * 
  * @author Jean-Baptiste Giraudeau
  */
 public interface IDataProvider extends IReplicsService {
 
-	public Collection<String> getMatches(Map<String, String> descMatcher);
+	public Collection<String> getMatchingRecords(Map<String, String> tagMatcher);
 	
-	public Collection<String> getMatches(Map<String, String> descMatcher, int sinceRevision);
+	public Collection<String> getMatchingRecords(Map<String, String> tagMatcher, int sinceRevision);
 	
-	public Map<String, String> getDesc(String recordID);
+	public int getRevision();
 	
-	public Map<String, Map<String, String> > getDescMap(Collection<String> recordIDs);
+	public Map<String, String> getTagsForRecord(String recordID);
 	
-	public byte[] getFile(String recordID);
+	public File getFile(String recordID);
 	
-	public void deleteFiles(Collection<String> recordIDs);
-
-	public void deleteDesc(Collection<String> recordIDs);
+	public void deleteRecord(String recordID);
 	
-	public void deleteRecords(Collection<String> recordIDs);
+	public void deleteFileForRecord(String recordID);
 	
-	public void saveFile(String recordID, byte[] file);
+	public boolean recordExists(String recordID);
 	
-	public void saveDesc(String recordID, Map<String, String> desc);
+	public String saveRecord(String recordID, File file, Map<String, String> tags);
 	
-	public void saveDescMap(Map<String, Map<String, String> > descMap);
-	
-	public void saveRecord(String recordID, Map<String, String> desc, byte[] file);
+	public String saveRecord(String recordID, byte[] file, Map<String, String> tags);
 	
 }
