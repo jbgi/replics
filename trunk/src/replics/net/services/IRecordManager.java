@@ -20,10 +20,7 @@
 
 package replics.net.services;
 
-import replics.data.IRecord;
-import replics.data.ITagRecord;
-import replics.data.Tag;
-import replics.ids.IRecordID;
+import java.util.Map;
 import replics.services.IReplicsService;
 
 /**
@@ -34,41 +31,6 @@ import replics.services.IReplicsService;
  */
 public interface IRecordManager extends IReplicsService {
 	
-	/**
-	 * 
-	 * Ask the groups the missing records  
-	 * notified : the peerGroupID is contained in the RecordId
-	 * 
-	 * @param records
-	 */
-	public void askForRecords(IRecordID records) ;
-    
-    /**
-     * Ask the peer the missing tags
-     * @param tagRecord
-     * 
-     */
-    public void askForTags(ITagRecord tagRecord) ;
-    
-    /**
-     * Add a record from a local registration or from a response of a peer (loading of missing records)
-     * @param record
-     * @return
-     */
-    public boolean addNewRecord(IRecord record);
-    
-    /**Add a new tagRecord 
-     * @param tagRecord
-     * @return true if the addition occurred well and false else
-     */
-    public boolean addNewTag(ITagRecord tagRecord);
-    
-    /**Add a new tag
-     * @param recordID
-     * @param tag
-     * @return true if the addition occurred well and false else
-     */
-    public boolean addNewTag(IRecordID recordID, Tag tag);
-    
-    
+	public void save(Map<String, String> metaData, Object object);
+	
 }
