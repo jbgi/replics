@@ -15,22 +15,12 @@ import replics.net.services.IRecordManager;
 import replics.net.services.IRecordQuotaManager;
 
 public interface IServiceManager {
-
-	public IDataProvider getDataProvider();
-	
-	public IPeerGroupManager getPeerGroupManager();
 	
 	public IMembershipService getMembershipService();
 	
 	public IRecordManager getRecordManager();
 	
 	public IRecordComparator getRecordComparator();
-	
-	public IMessageMailer getMessageMailer();
-	
-	public IMessageFactory getMessageFactory();
-	
-	public IPropagator getMessagePropagator();
 	
 	public IRecordQuotaManager getRecordQuotaManager();
 	
