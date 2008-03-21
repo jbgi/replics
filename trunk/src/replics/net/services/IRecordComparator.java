@@ -1,7 +1,7 @@
 package replics.net.services;
 
-import replics.impl.data.MetaRecord;
 import replics.services.IReplicsService;
+import secolaman.data.Ressource;
 
 public interface IRecordComparator extends IReplicsService {
 
@@ -11,7 +11,7 @@ public interface IRecordComparator extends IReplicsService {
 	 * @param metaRecord
 	 * @param listener
 	 */
-	public void checkMetaRecord(String listenerName, IComparisonListener listener, MetaRecord metaRecord);
+	public void checkMetaRecord(String listenerName, IComparisonListener listener, Ressource ressource);
 	
 	/**
 	 * this method allows to have a registration of all the comparisons

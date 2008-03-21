@@ -21,7 +21,7 @@
 package replics.net.services;
 
 import replics.services.IReplicsService;
-import secolaman.data.MetaData;
+import secolaman.data.Ressource;
 
 /**
  * create a new Record's content and send it to the group 
@@ -31,6 +31,6 @@ import secolaman.data.MetaData;
  */
 public interface IRecordManager extends IReplicsService {
 	
-	public void save(MetaData metaData, Record record);
+	public void save(Ressource ressource);
 	
 }
