@@ -20,8 +20,8 @@
 
 package replics.net.services;
 
-import java.util.Map;
 import replics.services.IReplicsService;
+import secolaman.data.MetaData;
 
 /**
  * create a new Record's content and send it to the group 
@@ -31,6 +31,6 @@ import replics.services.IReplicsService;
  */
 public interface IRecordManager extends IReplicsService {
 	
-	public void save(Map<String, String> metaData, Object object);
+	public void save(MetaData metaData, Record record);
 	
 }

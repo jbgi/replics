@@ -1,6 +1,6 @@
 package replics.net.services;
 
-import replics.data.IMetaRecord;
+import replics.impl.data.MetaRecord;
 import replics.services.IReplicsService;
 
 public interface IRecordComparator extends IReplicsService {
@@ -11,12 +11,12 @@ public interface IRecordComparator extends IReplicsService {
 	 * @param metaRecord
 	 * @param listener
 	 */
-	public void checkMetaRecord(IMetaRecord metaRecord, IComparisonListener listener);
+	public void checkMetaRecord(String listenerName, IComparisonListener listener, MetaRecord metaRecord);
 	
 	/**
 	 * this method allows to have a registration of all the comparisons
 	 * @param listener
 	 */
-	public void registerListener(IComparisonListener listener);
+	public void unRegisterListener(String listenerName);
 	
 }
