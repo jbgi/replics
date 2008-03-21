@@ -32,41 +32,28 @@ import replics.net.services.IRecordQuotaManager;
 import replics.services.IReplicsService;
 import replics.services.ISerializer;
 import replics.services.IServiceManager;
+import secolaman.Connector;
 
 public class DefaultServiceManager implements IServiceManager {
 
-	private IDataProvider dataProvider;
+	private Connector connector;
 	private IMembershipService membershipService;
-	private IPeerGroupManager peerGroupManager;
 	private IRecordComparator recordComparator;
 	private IRecordManager recordManager;
-	private IMessageMailer messageMailer;
 	private IRecordQuotaManager recordQuotaManager;
 	private ISerializer serializer;
 	private Logger logger;
-	private IPropagator propagator;
-	private IMessageFactory messageFactory;
 	private Configuration config;
 	private String configFilePath;
 	
-	private IReplicsService[] services = {dataProvider, membershipService, peerGroupManager, 
-			recordComparator, recordManager, messageMailer, recordQuotaManager, serializer,
-			propagator, messageFactory};
+	private IReplicsService[] services = {membershipService, recordComparator,
+			recordManager, recordQuotaManager, serializer};
 	
 	public DefaultServiceManager() {}
 	
 	public DefaultServiceManager(String configFilePath)
 	{
 		this.configFilePath = configFilePath;
-	}
-	
-	public IDataProvider getDataProvider() {
-		if (null == dataProvider)
-		{
-			dataProvider = new DerbyDataProvider();
-			dataProvider.initialize(this);
-		}
-		return dataProvider;
 	}
 
 	public IMembershipService getMembershipService() {
@@ -76,15 +63,6 @@ public class DefaultServiceManager implements IServiceManager {
 			membershipService.initialize(this);
 		}
 		return membershipService;
-	}
-
-	public IPeerGroupManager getPeerGroupManager() {
-		if (null == peerGroupManager)
-		{
-			peerGroupManager = new PeerGroupManager();
-			peerGroupManager.initialize(this);
-		}
-		return peerGroupManager;
 	}
 
 	public IRecordComparator getRecordComparator() {
@@ -103,15 +81,6 @@ public class DefaultServiceManager implements IServiceManager {
 			recordManager.initialize(this);
 		}
 		return recordManager;
-	}
-
-	public IMessageMailer getMessageMailer() {
-		if (null == messageMailer)
-		{
-			messageMailer = new JGroupMailer();
-			messageMailer.initialize(this);
-		}
-		return messageMailer;
 	}
 
 	public IRecordQuotaManager getRecordQuotaManager() {
@@ -138,24 +107,6 @@ public class DefaultServiceManager implements IServiceManager {
 			logger = Logger.getLogger("replics.services");
 		}
 		return logger;
-	}
-
-	public IPropagator getMessagePropagator() {
-		if (null == propagator)
-		{
-			propagator = new Propagator();
-			propagator.initialize(this);
-		}
-		return propagator;
-	}
-	
-	public IMessageFactory getMessageFactory() {
-		if (null == messageFactory)
-		{
-			messageFactory = new MessageFactory();
-			messageFactory.initialize(this);
-		}
-		return messageFactory;
 	}
 
 	public Configuration getConfig() {
@@ -211,6 +162,11 @@ public class DefaultServiceManager implements IServiceManager {
 		{
 			logger.info("Replics is shutting down now!");
 		}
+	}
+
+	public Connector getConnector() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
