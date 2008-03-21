@@ -25,13 +25,15 @@ public interface Group {
 
 	public void register(String subscriberName, PeerSubscriber subscriber);
 
-	public void register(String subscriberName, Subscriber subscriber);
-
+	public void register(String subscriberName, Subscriber subscriber, long discoveringInterval);
+	
 	public void registerLocally(String subscriberName, Subscriber subscriber);
+
+	public void registerPassive(String subscriberName, Subscriber subscriber);
 
 	public void sendAll(Ressource ressource);
 
-	public void sendTo(Peer destPeer, Ressource ressource);
+	public void sendTo(String peerID, Ressource ressource);
 
 	public void unregister(String subscriberName);
 
